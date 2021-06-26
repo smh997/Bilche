@@ -137,3 +137,4 @@ dmypy.json
 djangorestframework-simplejwt)
 0.2.2
 .env.py
+
