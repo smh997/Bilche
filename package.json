@@ -2,6 +2,7 @@
   "name": "bilche-web",
   "version": "1.0.0",
   "private": true,
+  "types": "index.d.ts",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -14,7 +15,9 @@
     "@nuxtjs/axios": "^5.13.1",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "vue-js-modal": "^2.0.0-rc.6",
+    "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",
@@ -27,6 +30,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.7.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "@nuxtjs/style-resources": "^1.0.0"
   }
 }

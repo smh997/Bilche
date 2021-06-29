@@ -1,0 +1,109 @@
+h1 {
+	margin: 0;
+	text-align: right;
+	font-size: 23px;
+	line-height: 50px;
+	font-weight: 500;
+	color: $gray-00;
+}
+
+h2 {
+	margin: 0;
+	text-align: right;
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: 500;
+	color: $gray-00;
+}
+
+h3 {
+	margin: 0;
+	text-align: right;
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: 500;
+	color: $gray-00;
+}
+
+@mixin tg-link {
+	text-align: right;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 30px;
+	color: $palette-primary;
+	text-decoration-line: none;
+	cursor: pointer;
+	&:hover {
+		text-decoration-line: underline;
+	}
+	&:active {
+		color: $gray-00;
+		text-decoration-line: underline;
+	}
+}
+a,
+.tg-link {
+	@include tg-link;
+}
+
+@mixin tg-medium {
+	text-align: right;
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: 500;
+	color: $gray-00;
+}
+.tg-medium {
+	@include tg-medium;
+}
+
+@mixin tg-regular {
+	text-align: right;
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: normal;
+	color: $gray-00;
+}
+.tg-regular {
+	@include tg-regular;
+}
+@mixin tg-light {
+	text-align: right;
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: 300;
+	color: $gray-00;
+}
+.tg-light {
+	@include tg-light;
+}
+@mixin tg-label-medium {
+	text-align: right;
+	font-size: 12px;
+	line-height: 19px;
+	font-weight: 500;
+	color: $gray-00;
+}
+.tg-label-medium {
+	@include tg-label-medium;
+}
+@mixin tg-label-regular {
+	text-align: right;
+	font-size: 12px;
+	line-height: 19px;
+	font-weight: normal;
+	color: $gray-00;
+}
+.tg-label-regular {
+	@include tg-label-regular;
+}
+@mixin tg-label-light {
+	text-align: right;
+	font-size: 12px;
+	line-height: 19px;
+	font-weight: 300;
+	color: $gray-00;
+}
+.tg-label-light {
+	@include tg-label-light;
+}

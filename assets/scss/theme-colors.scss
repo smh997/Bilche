@@ -1,0 +1,56 @@
+// grays
+$gray-00: #000000;
+$gray-10: #1a1a1a;
+$gray-20: #333333;
+$gray-30: #4d4d4d;
+$gray-50: #808080;
+$gray-70: #b2b2b2;
+$gray-80: #cccccc;
+$gray-85: #d9d9d9;
+$gray-90: #e7e7e7;
+$gray-95: #f2f2f2;
+$gray-98: #f7f7f7;
+$gray-100: #ffffff;
+
+// alerts
+$alert-red: #ff0000;
+$alert-red-light: #ffcccc;
+$alert-yellow: #ffd600;
+$alert-yellow-light: #fff7cc;
+$alert-green: #28a745;
+$alert-green-light: #e5ffeb;
+// palettes
+$palette-primary: #ff740d;
+$palette-primary-light: #fff0e6;
+$palette-secondary: #2ad87b;
+$palette-secondary-light: #ebfaf2;
+$palette-secondary-dark: #1ea95f;
+// for use in css
+:root {
+	// grays
+	--gray-00: #000000;
+	--gray-10: #1a1a1a;
+	--gray-20: #333333;
+	--gray-30: #4d4d4d;
+	--gray-50: #808080;
+	--gray-70: #b2b2b2;
+	--gray-80: #cccccc;
+	--gray-85: #d9d9d9;
+	--gray-90: #e7e7e7;
+	--gray-95: #f2f2f2;
+	--gray-98: #f7f7f7;
+	--gray-100: #ffffff;
+	// alerts
+	--alert-red: #ff0000;
+	--alert-red-light: #ffcccc;
+	--alert-yellow: #ffd600;
+	--alert-yellow-light: #fff7cc;
+	--alert-green: #28a745;
+	--alert-green-light: #e5ffeb;
+	// palettes
+	--palette-primary: #ff740d;
+	--palette-primary-light: #fff0e6;
+	--palette-secondary: #2ad87b;
+	--palette-secondary-light: #ebfaf2;
+	--palette-secondary-dark: #1ea95f;
+}
