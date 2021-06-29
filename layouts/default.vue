@@ -2,14 +2,16 @@
   <div>
     <page-header />
     <Nuxt />
+    <page-footer />
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import PageHeader from '~/components/PageHeader.vue'
+import PageFooter from '~/components/Footer.vue'
 
 export default Vue.extend({
-  components: { PageHeader },
+  components: { PageHeader, PageFooter },
 })
 </script>
 <style>
