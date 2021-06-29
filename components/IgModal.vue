@@ -6,10 +6,10 @@
       :name="name"
       :adaptive="adaptive"
       :scrollable="scrollable"
-      :height="height"
+      :height="!isMobile ? height : '100%'"
       :min-height="minHeight"
       :max-height="maxHeight"
-      :width="width"
+      :width="!isMobile ? width : '100%'"
       :min-width="minWidth"
       :max-width="maxWidth"
       :shift-x="shiftX"
@@ -94,6 +94,9 @@ export default Vue.extend({
       default: 0.5,
     },
   },
+  data: () => ({
+    isMobile: false,
+  }),
   watch: {
     value() {
       if (this.value) {
@@ -102,6 +105,11 @@ export default Vue.extend({
         this.hide()
       }
     },
+  },
+  beforeMount() {
+    if (window.innerWidth <= 768) {
+      this.isMobile = true
+    }
   },
   mounted() {
     setTimeout(() => {

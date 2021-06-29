@@ -2,19 +2,21 @@
   <div>
     <page-header />
     <Nuxt />
+    <login-modal />
     <page-footer />
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import PageHeader from '~/components/PageHeader.vue'
+import LoginModal from '~/components/LoginModal.vue'
 import PageFooter from '~/components/Footer.vue'
 
 export default Vue.extend({
-  components: { PageHeader, PageFooter },
+  components: { PageHeader, LoginModal, PageFooter },
 })
 </script>
-<style>
+<style lang="scss">
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
