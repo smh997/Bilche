@@ -1,0 +1,6 @@
+package com.bilche.example.bilche
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
