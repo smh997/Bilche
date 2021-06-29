@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'phone_field',
     'accounts',
+    'home_page'
 ]
 
 MIDDLEWARE = [
