@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     'drf_yasg',
     'rest_framework',
+    'django_rest_passwordreset',
     'rest_framework.authtoken',
     'phone_field',
     'accounts',
@@ -140,3 +141,14 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.gmail.com'
+DEFAULT_FROM_EMAIL = 'smh10.mh@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'Bilche.tech@gmail.com'
+EMAIL_HOST_PASSWORD = 'AliMohammadSharifi@BilChe1400'
