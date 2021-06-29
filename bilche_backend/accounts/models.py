@@ -1,6 +1,27 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from phone_field import PhoneField
+from django.template import loader
+from django.dispatch import receiver
+from django_rest_passwordreset.signals import reset_password_token_created
+from django.core.mail import send_mail
+
+
+@receiver(reset_password_token_created)
+def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+    html_content = loader.render_to_string(template_name='email.html', context={'token': str(reset_password_token.key)})
+    send_mail(
+        # subject:
+        "تغییر رمز عبور حساب بیلچه",
+        # message:
+        "",
+        # from:
+        "Bilche.tech@gmail.com",
+        # to:
+        [reset_password_token.user.email],
+        # html
+        html_message=html_content
+    )
 
 
 class User(AbstractUser):
