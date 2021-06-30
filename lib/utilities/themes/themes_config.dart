@@ -6,11 +6,13 @@ import 'colors.dart';
 class BTheme {
   static ThemeData light = ThemeData(
     scaffoldBackgroundColor: backgroundColor,
-    primaryTextTheme: BTypography.textTheme,
     primaryColor: PrimaryColor.main,
     accentColor: SecondaryColor.main,
     shadowColor: ShadowColor.card,
+    dividerColor: GrayColor.g50,
+    hoverColor: GrayColor.g70,
     textTheme: BTypography.textTheme,
+    primaryTextTheme: BTypography.textTheme,
   );
 
   static ThemeData dark = light;
