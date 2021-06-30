@@ -29,7 +29,6 @@ class BPushButton extends StatelessWidget {
     return InkWell(
       child: Container(
         padding: buttonPadding,
-        margin: buttonPadding,
         height: buttonHeight,
         alignment: Alignment.center,
         decoration: BoxDecoration(
