@@ -25,8 +25,3 @@ class BAppBar extends AppBar {
     return super.createElement();
   }
 }
-
-// var appBar = AppBar(
-//   title: Text('تنظیمات دستیار', style: BTypography.headline3),
-//   backgroundColor: Colors.transparent,
-// );

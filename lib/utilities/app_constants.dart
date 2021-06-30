@@ -13,7 +13,10 @@ const extraSpacing = 16.0;
 
 //Paddings
 const scaffoldPadding = const EdgeInsets.all(16.0);
-const buttonPadding = const EdgeInsets.all(8.0);
+const cardPadding = const EdgeInsets.all(20.0);
+const regularPadding = const EdgeInsets.all(8.0);
+const mediumPadding = const EdgeInsets.all(12.0);
+const buttonPadding = regularPadding;
 
 //Heights
 const buttonHeight = 48.0;
