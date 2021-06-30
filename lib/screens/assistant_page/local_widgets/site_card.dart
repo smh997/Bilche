@@ -22,81 +22,81 @@ class SiteCard extends BCard {
     required this.humidityFactor,
     required this.placeType,
   }) : super(
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //Title
-                    Text(
-                      title,
-                      style: BTypography.bodyText2,
-                    ),
-                    SizedBox(height: normalSpacing),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            //Light
-                            Row(
-                              children: [
-                                Icon(CupertinoIcons.bubble_left),
-                                SizedBox(width: captionSpacing),
-                                Text(
-                                  lightFactor,
-                                  style: BTypography.overline,
-                                ),
-                              ],
-                            ),
-                            SizedBox(width: mediumSpacing),
-                            //Temperature
-                            Row(
-                              children: [
-                                Icon(CupertinoIcons.bubble_left),
-                                SizedBox(width: captionSpacing),
-                                Text(
-                                  tempFactor,
-                                  style: BTypography.overline,
-                                ),
-                              ],
-                            ),
-                            SizedBox(width: mediumSpacing),
-                            //Humidity
-                            Row(
-                              children: [
-                                Icon(CupertinoIcons.bubble_left),
-                                SizedBox(width: captionSpacing),
-                                Text(
-                                  humidityFactor,
-                                  style: BTypography.overline,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: captionSpacing),
-                        //Place Type
-                        Row(
-                          children: [
-                            Text(
-                              'نوع محل:',
-                              style: BTypography.overline,
-                            ),
-                            SizedBox(width: captionSpacing),
-                            Text(
-                              placeType,
-                              style: BTypography.overline,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Text('Pictures')
-              ],
-            ));
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //Title
+                  Text(
+                    title,
+                    style: BTypography.bodyText2,
+                  ),
+                  SizedBox(height: normalSpacing),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          //Light
+                          Row(
+                            children: [
+                              Icon(CupertinoIcons.bubble_left),
+                              SizedBox(width: captionSpacing),
+                              Text(
+                                lightFactor,
+                                style: BTypography.overline,
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: mediumSpacing),
+                          //Temperature
+                          Row(
+                            children: [
+                              Icon(CupertinoIcons.bubble_left),
+                              SizedBox(width: captionSpacing),
+                              Text(
+                                tempFactor,
+                                style: BTypography.overline,
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: mediumSpacing),
+                          //Humidity
+                          Row(
+                            children: [
+                              Icon(CupertinoIcons.bubble_left),
+                              SizedBox(width: captionSpacing),
+                              Text(
+                                humidityFactor,
+                                style: BTypography.overline,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: captionSpacing),
+                      //Place Type
+                      Row(
+                        children: [
+                          Text(
+                            'نوع محل:',
+                            style: BTypography.overline,
+                          ),
+                          SizedBox(width: captionSpacing),
+                          Text(
+                            placeType,
+                            style: BTypography.overline,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Text('Pictures')
+            ],
+          ),
+        );
 }
