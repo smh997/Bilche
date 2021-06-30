@@ -38,4 +38,4 @@ class SubscribeSerializer(serializers.Serializer):
 class InstallappSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bilche_install_app
-        fields = ('user', 'application_store')
+        fields = '__all__'
