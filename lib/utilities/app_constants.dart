@@ -2,25 +2,27 @@ import 'package:bilche/utilities/themes/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 //Borders
-const normalBorder = const Radius.circular(8.0);
+const normalBorder = const Radius.circular(d8);
 const roundBorder = const Radius.circular(1000);
 
 //Spacing
-const captionSpacing = 4.0;
-const normalSpacing = 8.0;
-const mediumSpacing = 12.0;
-const extraSpacing = 16.0;
+const captionSpacing = d4;
+const normalSpacing = d8;
+const mediumSpacing = d12;
+const extraSpacing = d16;
+const hugeSpacing = d20;
 
 //Paddings
-const scaffoldPadding = const EdgeInsets.all(16.0);
-const cardPadding = const EdgeInsets.all(20.0);
-const regularPadding = const EdgeInsets.all(8.0);
-const mediumPadding = const EdgeInsets.all(12.0);
+const scaffoldPadding = const EdgeInsets.all(d16);
+const cardPadding = const EdgeInsets.all(d20);
+const regularPadding = const EdgeInsets.all(d8);
+const mediumPadding = const EdgeInsets.all(d12);
 const buttonPadding = regularPadding;
 
 //Heights
-const buttonHeight = 48.0;
-const appBarHeight = 56.0;
+const menuItemHeight = d48;
+const buttonHeight = d48;
+const appBarHeight = d56;
 
 //Shadows
 const cardShadow = const BoxShadow(
@@ -38,3 +40,13 @@ const tabItemShadow = const BoxShadow(
   blurRadius: mediumSpacing,
   offset: Offset.zero,
 );
+
+//All Sizes
+const double d4 = 4.0;
+const double d8 = 8.0;
+const double d12 = 12.0;
+const double d16 = 16.0;
+const double d20 = 20.0;
+const double d36 = 36.0;
+const double d48 = 48.0;
+const double d56 = 56.0;
