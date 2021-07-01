@@ -16,7 +16,6 @@ class Bilche_subscribe(models.Model):
 
 
 class Bilche_install_app(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='installations')
     application_store_choices = (
         ('sa', 'Sib app'),
         ('s', 'Sibche'),
