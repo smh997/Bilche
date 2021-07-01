@@ -1,6 +1,8 @@
 import 'package:bilche/utilities/app_constants.dart';
 import 'package:bilche/utilities/themes/text_styles.dart';
 import 'package:bilche/widgets/app_bar.dart';
+import 'package:bilche/widgets/bottom_sheet.dart';
+import 'package:bilche/widgets/menu_item.dart';
 import 'package:bilche/widgets/notification.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +29,33 @@ class AssistantPage extends StatelessWidget {
                     padding: buttonPadding,
                     child: Icon(Icons.notification_important_outlined)),
                 onTap: () {}),
+            SizedBox(width: normalSpacing),
             InkWell(
                 child: Padding(
                     padding: buttonPadding,
                     child: Icon(Icons.notification_important_outlined)),
-                onTap: () {}),
+                onTap: () => bottomSheet(
+                      context,
+                      title: 'افزودن',
+                      body: <MenuItem>[
+                        MenuItem(
+                          text: 'گلخانه',
+                          onTap: () {
+                            print('Sosk');
+                          },
+                        ),
+                        MenuItem(
+                          text: 'گیاه',
+                          leading: Icon(CupertinoIcons.plus),
+                        ),
+                        MenuItem(
+                          text: 'فعالیت',
+                          leading: Icon(CupertinoIcons.plus),
+                          trailing: Icon(CupertinoIcons.plus),
+                          hasDivider: false,
+                        ),
+                      ],
+                    )),
           ],
         ),
         body: Padding(
