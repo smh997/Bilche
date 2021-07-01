@@ -4,10 +4,12 @@ import 'package:bilche/utilities/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class BAppBar extends AppBar {
-  BAppBar({required this.title, this.centerTitle, this.actions});
+  BAppBar({required this.title, this.centerTitle, List<Widget>? actions})
+      : super(actions: [
+          Padding(padding: regularPadding, child: Row(children: actions ?? []))
+        ]);
   final Widget? title;
   final bool? centerTitle;
-  final List<Widget>? actions;
 
   @override
   Color? get backgroundColor => Colors.transparent;
