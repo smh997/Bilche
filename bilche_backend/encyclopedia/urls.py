@@ -1,5 +1,7 @@
 from django.urls import path
 
-urlpatterns = [
+from encyclopedia.views import SearchAPIView
 
+urlpatterns = [
+    path('search/', SearchAPIView.as_view()),
 ]
