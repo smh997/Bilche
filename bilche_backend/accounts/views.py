@@ -34,10 +34,7 @@ class MyObtainAuthToken(APIView):
 
 
 class UserRegistrationAPIView(CreateAPIView):
-
-    def get_serializer_class(self):
-        self.serializer_class = UserSerializer
-        return self.serializer_class
+    serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
         request.data['username'] = request.data['email']

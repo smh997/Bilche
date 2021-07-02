@@ -12,45 +12,6 @@ from rest_framework.fields import empty
 from accounts.models import User
 from bilche_backend import settings
 
-#
-# ERROR_MESSAGES = {
-#     "blank": "این فیلد الزامی است",
-#     "null": "این فیلد الزامی است",
-#     "required": "این فیلد الزامی است",
-#     "invalid": "قالب این فیلد صحیح نمی‌باشد",
-#     "max_length": "اندازه‌ی این ورودی طولانی است",
-#     "min_length": "اندازه‌ی این ورودی کوچک است.",
-#     "unique": "این فیلد تکراری است",
-#     "unique_together": "این فیلدها تکرارین"
-# }
-#
-#
-# class ModelSerializer(serializers.ModelSerializer):
-#     """
-#     overwrite serializer.ModelSerializer for customize some thing it
-#     """
-#
-#     def __init__(self, instance=None, data=empty, **kwargs):
-#         super(ModelSerializer, self).__init__(instance, data, **kwargs)
-#         for field in self.fields:
-#             self.fields[field].error_messages.update(ERROR_MESSAGES)
-#
-#
-# class Serializer(serializers.Serializer):
-#     """
-#     overwrite Serializer with persian error
-#     """
-#
-#     def __init__(self, instance=None, data=empty, **kwargs):
-#         super(Serializer, self).__init__(instance, data, **kwargs)
-#         for field in self.fields:
-#             self.fields[field].error_messages.update(ERROR_MESSAGES)
-#
-#     def update(self, instance, validated_data):
-#         pass
-#
-#     def create(self, validated_data):
-#         pass
 
 class MyAuthTokenSerializer(AuthTokenSerializer):
     def validate(self, attrs):
@@ -86,7 +47,7 @@ class UserSerializer(serializers.ModelSerializer):
     def validate_phone_number(self, value):
         pattern = re.compile("^09\d{9}$")
         if pattern.match(value) is None:
-            raise serializers.ValidationError('فرمت شماره تلفت همراه نادرست است.'
+            raise serializers.ValidationError('فرمت شماره تلفن همراه نادرست است.'
                                                                'شماره تلفن همراه باید با 09 شروع شود و تنها شامل 11 رقم باشد.')
         if User.objects.filter(phone_number=value).exists():
             raise serializers.ValidationError("کاربری با این شماره تلفن وجود دارد.")
