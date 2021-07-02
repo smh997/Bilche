@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django_rest_passwordreset',
     'rest_framework.authtoken',
     'phone_field',
+    'colorfield',
     'accounts',
     'home_page',
     'encyclopedia'
@@ -142,6 +143,7 @@ CORS_ALLOWED_ORIGINS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
