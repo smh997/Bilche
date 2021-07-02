@@ -7,7 +7,7 @@
         #token {
             color: #f34f18;
             font-size: 20px;
-
+            alignment: center;
         }
         #back{
             background-color: #ffffff;
@@ -16,7 +16,7 @@
             padding: 20px;
         }
         #header1 {
-            background-image: linear-gradient(to right, #006400 50%, #006400 0%);
+            background-color:#006400;
             color: #ffffff;
             background-size: auto;
             padding: 20px;
@@ -26,7 +26,7 @@
             font-size: 40px;
         }
         #header2 {
-            background-image: linear-gradient(to right, #006400 50%,  #006400 0%);
+            background-color:#006400;
             background-size: auto;
             padding: 20px;
             margin-top: 0px;
@@ -43,7 +43,7 @@
         <h2 id="title" align="center"><b>تغییر رمز عبور</b></h2>
         <p align="right">سلام!</p>
         <p align="right">:شناسه تغییر رمز عبور شما جهت ورود به بیلچه</p>
-        <p id="token" align="center">{{ token }}</p>
+        <p align="center"><a id="token" href="{{ token }}">لینک تغییر رمز عبور</a></p>
         <p align="right">.لطفاً جهت تایید ایمیل خود، هرچه سریعتر آن را در صفحه فراموشی رمز وارد نمایید</p>
         <p align="right">.اگر شما چنین درخواستی نداده‌اید، جای نگرانی نیست! تنها کافیست این ایمیل را نادیده بگیرید</p>
         <p align="right">.این ایمیل توسط سیستم و بطور خودکار ارسال شده است. لطفاً به آن پاسخ ندهید</p>

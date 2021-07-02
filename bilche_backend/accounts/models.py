@@ -9,7 +9,8 @@ from django.core.mail import send_mail
 
 @receiver(reset_password_token_created)
 def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
-    html_content = loader.render_to_string(template_name='email.html', context={'token': str(reset_password_token.key)})
+    html_content = loader.render_to_string(template_name='email.html',
+                                           context={'token': 'http://localhost:3000/forgotPassword?token=' + str(reset_password_token.key)})
     send_mail(
         # subject:
         "تغییر رمز عبور حساب بیلچه",
@@ -26,9 +27,9 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
 
 class User(AbstractUser):
     level_choices = (
-        ('b', 'Beginner'),
-        ('m', 'MiddleLevel'),
-        ('p', 'Professional')
+        ('b', 'تازه کار'),
+        ('m', 'سطح میانه'),
+        ('p', 'حرفه ای')
     )
     fullname = models.CharField(max_length=100, blank=True, default='')
     level = models.CharField(max_length=1, choices=level_choices, default='b')
