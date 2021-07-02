@@ -1,0 +1,45 @@
+<template>
+  <div class="card">
+    <img class="card-image" src="/img/big-card-image.svg" />
+    <div class="card-title">کاکتوس</div>
+    <div class="card-subtitle">2.4 دنبال کننده</div>
+  </div>
+</template>
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  name: 'PlantCard',
+})
+</script>
+<style lang="scss" scoped>
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  width: 201px;
+  height: 229px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
+  background: $gray-100;
+  border-radius: 8px;
+  margin: 8px;
+  .card-image {
+    margin-top: 36px;
+    width: 185px;
+    height: 91px;
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-size: 14px;
+    line-height: 24px;
+    color: $gray-10;
+    margin-bottom: 8px;
+  }
+  .card-subtitle {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    color: $gray-10;
+  }
+}
+</style>

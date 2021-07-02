@@ -212,28 +212,28 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   font-family: IRANSansWebFaNum;
-  // background: $gray-100;
-  // border: 1px solid $gray-90;
+  background: $gray-100;
+  border: 1px solid $gray-90;
   border-radius: 20px;
   text-align: right;
   padding: 0px 15px;
-  // caret-color: $palette-primary;
+  caret-color: $palette-primary;
   outline: none;
   // text
-  // color: $gray-00;
+  color: $gray-00;
   font-size: 13px;
   line-height: 30px;
 
   &.invalid {
-    // border-color: $alert-red !important;
-    // color: $alert-red;
+    border-color: $alert-red !important;
+    color: $alert-red;
   }
   &.success {
-    // background: $alert-green-light;
-    // border-color: $alert-green;
-    // color: $alert-green;
+    background: $alert-green-light;
+    border-color: $alert-green;
+    color: $alert-green;
     ~ .input-button > .tg-label-medium {
-      // color: $alert-green !important;
+      color: $alert-green !important;
     }
   }
 
@@ -253,18 +253,18 @@ export default Vue.extend({
 }
 .input::placeholder {
   font-family: IRANSansWebFaNum;
-  // color: $gray-70;
+  color: $gray-70;
   font-weight: 300;
   font-size: 13px;
   line-height: 30px;
 }
 .input:focus {
-  // border-color: $palette-primary;
+  border-color: $palette-primary;
 }
 .input:read-only {
   cursor: not-allowed;
-  // background: $gray-95;
-  // border-color: $gray-90;
+  background: $gray-95;
+  border-color: $gray-90;
 }
 // button
 .input-button {
@@ -277,7 +277,7 @@ export default Vue.extend({
   justify-content: center;
   width: 56px;
   height: 40px;
-  // background: $gray-100;
+  background: $gray-100;
   padding: 10px 15px;
   border-radius: 20px;
   border: 0;
@@ -290,11 +290,11 @@ export default Vue.extend({
   text-align: center;
 
   &:hover {
-    // background: $palette-primary-light;
+    background: $palette-primary-light;
   }
 
   &.is-loading {
-    // background: $palette-primary-light;
+    background: $palette-primary-light;
     div {
       display: flex;
       align-items: center;
@@ -305,8 +305,8 @@ export default Vue.extend({
   }
 
   .button-label {
-    // @include tg-label-medium;
-    // color: $palette-primary;
+    @include tg-label-medium;
+    color: $palette-primary;
     font-size: 13px;
   }
 }
