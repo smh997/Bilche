@@ -1,4 +1,5 @@
 from django.db import models
+from colorfield.fields import ColorField
 
 
 class BasePlant(models.Model):
@@ -86,7 +87,9 @@ class PlantCategory(models.Model):
 
 
 class Color(models.Model):
-    color_code = models.CharField(max_length=7, primary_key=True)
+    color_code = ColorField(format='hexa', unique=True, error_messages={
+        'unique': 'این کد رنگ قبلا ثبت شده است.'
+    })
     color_name = models.CharField(max_length=50)
 
 
