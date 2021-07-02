@@ -68,7 +68,7 @@ class BasePlant(models.Model):
 
 
 class CommonName(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='common_names')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='common_names')
     name = models.CharField(max_length=50)
     pronunciation = models.FileField(null=True, upload_to='pronunciation')
 
@@ -82,8 +82,8 @@ class Category(models.Model):
 
 
 class PlantCategory(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='categories')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Plants')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='categories')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 class Color(models.Model):
@@ -94,17 +94,17 @@ class Color(models.Model):
 
 
 class PlantFlowerColor(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='flower_colors')
-    flower_color = models.ForeignKey(Color, on_delete=models.CASCADE, verbose_name='base_plants')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='flower_colors')
+    flower_color = models.ForeignKey(Color, on_delete=models.CASCADE, related_name='fbase_plants')
 
 
 class PlantLeafColor(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='leaf_colors')
-    leaf_color = models.ForeignKey(Color, on_delete=models.CASCADE, verbose_name='base_plants')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='leaf_colors')
+    leaf_color = models.ForeignKey(Color, on_delete=models.CASCADE, related_name='lbase_plants')
 
 
 class PlantWatering(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='waterings')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='waterings')
     season_choices = (
         ('sp', 'بهار'),
         ('su', 'تابستان'),
@@ -121,8 +121,8 @@ class BaseFertilizer(models.Model):
 
 
 class PlantFertilizer(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='fertilizers')
-    base_fertilizer = models.ForeignKey(BaseFertilizer, on_delete=models.CASCADE, verbose_name='fertilizer_uses')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='fertilizers')
+    base_fertilizer = models.ForeignKey(BaseFertilizer, on_delete=models.CASCADE, related_name='fertilizer_uses')
     range = models.IntegerField()  # day
     season_choices = (
         ('sp', 'بهار'),
@@ -134,7 +134,7 @@ class PlantFertilizer(models.Model):
 
 
 class Image(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='pictures')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='pictures')
     alternative_text = models.CharField(max_length=50)
     picture = models.ImageField(upload_to='plant_pictures')
 
@@ -152,12 +152,12 @@ class Content(models.Model):
 
 
 class BasePlantTag(models.Model):
-    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, verbose_name='tags')
-    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='base_plants')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='tags')
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='base_plants')
 
 
 class ContentTag(models.Model):
-    content = models.ForeignKey(Content, on_delete=models.CASCADE, verbose_name='tags')
-    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='contents')
+    content = models.ForeignKey(Content, on_delete=models.CASCADE, related_name='tags')
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='contents')
 
 
