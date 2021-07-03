@@ -2,10 +2,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.filters import SearchFilter
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from encyclopedia.models import BasePlant, PlantCategory
-from encyclopedia.serializers import BasePlantListSerializer
+from encyclopedia.serializers import BasePlantListSerializer, BasePlantObjectSerializer
 
 
 class SearchAPIView(ListAPIView):
@@ -54,3 +54,8 @@ class SearchAPIView(ListAPIView):
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
+
+class GetBasePlantAPIView(RetrieveAPIView):
+    serializer_class = BasePlantObjectSerializer
+    queryset = BasePlant.objects.all()
+    lookup_field = 'pk'
