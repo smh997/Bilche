@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from home_page.models import Bilche_subscribe, Bilche_feedback, Bilche_install_app
+
+admin.site.register(Bilche_subscribe)
+admin.site.register(Bilche_feedback)
+admin.site.register(Bilche_install_app)
