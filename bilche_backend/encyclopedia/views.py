@@ -1,6 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView
 
 from encyclopedia.models import BasePlant, PlantCategory
@@ -10,7 +11,7 @@ from encyclopedia.serializers import BasePlantSerializer
 class SearchAPIView(ListAPIView):
     queryset = BasePlant.objects.all()
     serializer_class = BasePlantSerializer
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['toxic', 'irritant', 'life_span', 'pruning', 'fogging', 'cleaning_pot', 'cleaning_leaves']
     search_fields = ['title', 'scientific_name', 'common_names__name']
 
