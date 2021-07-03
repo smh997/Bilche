@@ -138,6 +138,12 @@ class Image(models.Model):
     alternative_text = models.CharField(max_length=50)
     picture = models.ImageField(upload_to='plant_pictures')
 
+    def get_str_picture(self):
+        if self.picture:
+            return str(self.picture.url)
+        else:
+            return None
+
 
 class Tag(models.Model):
     tag_text = models.CharField(max_length=100, primary_key=True)
