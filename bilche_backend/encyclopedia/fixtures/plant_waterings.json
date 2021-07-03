@@ -1,0 +1,110 @@
+[
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 1,
+    "fields": {
+      "base_plant": 1,
+      "season": "su",
+      "range": 4
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 2,
+    "fields": {
+      "base_plant": 1,
+      "season": "w",
+      "range": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 3,
+    "fields": {
+      "base_plant": 2,
+      "season": "su",
+      "range": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 4,
+    "fields": {
+      "base_plant": 2,
+      "season": "w",
+      "range": 14
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 5,
+    "fields": {
+      "base_plant": 3,
+      "season": "su",
+      "range": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 6,
+    "fields": {
+      "base_plant": 3,
+      "season": "w",
+      "range": 14
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 7,
+    "fields": {
+      "base_plant": 4,
+      "season": "su",
+      "range": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 8,
+    "fields": {
+      "base_plant": 4,
+      "season": "w",
+      "range": 10
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 9,
+    "fields": {
+      "base_plant": 5,
+      "season": "su",
+      "range": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 10,
+    "fields": {
+      "base_plant": 5,
+      "season": "w",
+      "range": 14
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 11,
+    "fields": {
+      "base_plant": 6,
+      "season": "su",
+      "range": 4
+    }
+  },
+  {
+    "model": "encyclopedia.plantWatering",
+    "pk": 12,
+    "fields": {
+      "base_plant": 6,
+      "season": "w",
+      "range": 7
+    }
+  }
+]

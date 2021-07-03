@@ -1,0 +1,37 @@
+[
+  {
+    "model": "encyclopedia.category",
+    "pk": 1,
+    "fields": {
+      "name": "مقاوم"
+    }
+  },
+  {
+    "model": "encyclopedia.category",
+    "pk": 2,
+    "fields": {
+      "name": "آپارتمانی (درون خانه‌ای)"
+    }
+  },
+  {
+    "model": "encyclopedia.category",
+    "pk": 3,
+    "fields": {
+      "name": "باغچه‌ای"
+    }
+  },
+  {
+    "model": "encyclopedia.category",
+    "pk": 4,
+    "fields": {
+      "name": "گلدار"
+    }
+  },
+  {
+    "model": "encyclopedia.category",
+    "pk": 5,
+    "fields": {
+      "name": "کاکتوس و ساکولنت"
+    }
+  }
+]

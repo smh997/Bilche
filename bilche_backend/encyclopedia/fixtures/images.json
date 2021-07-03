@@ -1,0 +1,182 @@
+[
+ {
+    "model": "encyclopedia.image",
+    "pk": 1,
+    "fields": {
+      "base_plant": 1,
+      "alternative_text": "p1_1",
+      "picture": "/media/plant_pictures/p1_1.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 2,
+    "fields": {
+      "base_plant": 1,
+      "alternative_text": "p1_2",
+      "picture": "/media/plant_pictures/p1_2.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 3,
+    "fields": {
+      "base_plant": 1,
+      "alternative_text": "p1_3",
+      "picture": "/media/plant_pictures/p1_3.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 4,
+    "fields": {
+      "base_plant": 1,
+      "alternative_text": "p1_4",
+      "picture": "/media/plant_pictures/p1_4.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 5,
+    "fields": {
+      "base_plant": 2,
+      "alternative_text": "p2_1",
+      "picture": "/media/plant_pictures/p2_1.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 6,
+    "fields": {
+      "base_plant": 2,
+      "alternative_text": "p2_2",
+      "picture": "/media/plant_pictures/p2_2.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 7,
+    "fields": {
+      "base_plant": 2,
+      "alternative_text": "p2_3",
+      "picture": "/media/plant_pictures/p2_3.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 8,
+    "fields": {
+      "base_plant": 3,
+      "alternative_text": "p3_1",
+      "picture": "/media/plant_pictures/p3_1.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 9,
+    "fields": {
+      "base_plant": 3,
+      "alternative_text": "p3_2",
+      "picture": "/media/plant_pictures/p3_2.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 10,
+    "fields": {
+      "base_plant": 3,
+      "alternative_text": "p3_3",
+      "picture": "/media/plant_pictures/p3_3.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 11,
+    "fields": {
+      "base_plant": 4,
+      "alternative_text": "p4_1",
+      "picture": "/media/plant_pictures/p4_1.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 12,
+    "fields": {
+      "base_plant": 4,
+      "alternative_text": "p4_2",
+      "picture": "/media/plant_pictures/p4_2.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 13,
+    "fields": {
+      "base_plant": 4,
+      "alternative_text": "p4_3",
+      "picture": "/media/plant_pictures/p4_3.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 14,
+    "fields": {
+      "base_plant": 5,
+      "alternative_text": "p5_1",
+      "picture": "/media/plant_pictures/p5_1.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 15,
+    "fields": {
+      "base_plant": 5,
+      "alternative_text": "p5_2",
+      "picture": "/media/plant_pictures/p5_2.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 16,
+    "fields": {
+      "base_plant": 5,
+      "alternative_text": "p5_3",
+      "picture": "/media/plant_pictures/p5_3.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 17,
+    "fields": {
+      "base_plant": 5,
+      "alternative_text": "p5_4",
+      "picture": "/media/plant_pictures/p5_4.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 18,
+    "fields": {
+      "base_plant": 6,
+      "alternative_text": "p6_1",
+      "picture": "/media/plant_pictures/p6_1.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 19,
+    "fields": {
+      "base_plant": 6,
+      "alternative_text": "p6_2",
+      "picture": "/media/plant_pictures/p6_2.jpg"
+    }
+  },
+  {
+    "model": "encyclopedia.image",
+    "pk": 20,
+    "fields": {
+      "base_plant": 6,
+      "alternative_text": "p6_3",
+      "picture": "/media/plant_pictures/p6_3.jpg"
+    }
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "model": "encyclopedia.baseFertilizer",
+    "pk": 1,
+    "fields": {
+      "name": "کود مایع"
+    }
+  },
+  {
+    "model": "encyclopedia.baseFertilizer",
+    "pk": 2,
+    "fields": {
+      "name": "کود شیمیایی رقیق"
+    }
+  },
+  {
+    "model": "encyclopedia.baseFertilizer",
+    "pk": 3,
+    "fields": {
+      "name": "کود سه بیست 20-20-20"
+    }
+  }
+]

@@ -1,0 +1,226 @@
+[
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 1,
+    "fields": {
+      "base_plant": 1,
+      "flower_color": 1
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 2,
+    "fields": {
+      "base_plant": 1,
+      "flower_color": 2
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 3,
+    "fields": {
+      "base_plant": 1,
+      "flower_color": 3
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 4,
+    "fields": {
+      "base_plant": 1,
+      "flower_color": 4
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 5,
+    "fields": {
+      "base_plant": 1,
+      "flower_color": 5
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 6,
+    "fields": {
+      "base_plant": 2,
+      "flower_color": 6
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 7,
+    "fields": {
+      "base_plant": 2,
+      "flower_color": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 8,
+    "fields": {
+      "base_plant": 2,
+      "flower_color": 8
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 9,
+    "fields": {
+      "base_plant": 2,
+      "flower_color": 9
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 10,
+    "fields": {
+      "base_plant": 3,
+      "flower_color": 6
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 11,
+    "fields": {
+      "base_plant": 3,
+      "flower_color": 10
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 12,
+    "fields": {
+      "base_plant": 3,
+      "flower_color": 11
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 13,
+    "fields": {
+      "base_plant": 4,
+      "flower_color": 6
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 14,
+    "fields": {
+      "base_plant": 4,
+      "flower_color": 1
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 15,
+    "fields": {
+      "base_plant": 4,
+      "flower_color": 12
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 16,
+    "fields": {
+      "base_plant": 4,
+      "flower_color": 13
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 17,
+    "fields": {
+      "base_plant": 5,
+      "flower_color": 11
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 18,
+    "fields": {
+      "base_plant": 5,
+      "flower_color": 6
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 19,
+    "fields": {
+      "base_plant": 5,
+      "flower_color": 9
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 20,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 5
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 21,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 2
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 22,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 3
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 23,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 6
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 24,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 25,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 11
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 26,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 10
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 27,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 9
+    }
+  },
+  {
+    "model": "encyclopedia.plantFlowerColor",
+    "pk": 28,
+    "fields": {
+      "base_plant": 6,
+      "flower_color": 13
+    }
+  }
+]

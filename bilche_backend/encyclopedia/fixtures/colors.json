@@ -1,0 +1,106 @@
+[
+  {
+    "model": "encyclopedia.color",
+    "pk": 1,
+    "fields": {
+      "color_code": "#FFFFFF",
+      "color_name": "سفید"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 2,
+    "fields": {
+      "color_code": "#F4162C",
+      "color_name": "قرمز"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 3,
+    "fields": {
+      "color_code": "#CC27B7",
+      "color_name": "ارغوانی روشن"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 4,
+    "fields": {
+      "color_code": "#8E26E0",
+      "color_name": "بنفش"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 5,
+    "fields": {
+      "color_code": "#FF66CD",
+      "color_name": "صورتی"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 6,
+    "fields": {
+      "color_code": "#598F00",
+      "color_name": "سبز"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 7,
+    "fields": {
+      "color_code": "#84CC1F",
+      "color_name": "سبز روشن"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 8,
+    "fields": {
+      "color_code": "#A7ADA2",
+      "color_name": "خاکی"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 9,
+    "fields": {
+      "color_code": "#3D1839",
+      "color_name": "ارغوانی تیره"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 10,
+    "fields": {
+      "color_code": "#E5DC39",
+      "color_name": "زرد طلایی"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 11,
+    "fields": {
+      "color_code": "#435C37",
+      "color_name": "سبز تیره"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 12,
+    "fields": {
+      "color_code": "#F5E893",
+      "color_name": "کرم"
+    }
+  },
+  {
+    "model": "encyclopedia.color",
+    "pk": 13,
+    "fields": {
+      "color_code": "#F5F593",
+      "color_name": "زرد کمرنگ"
+    }
+  }
+]

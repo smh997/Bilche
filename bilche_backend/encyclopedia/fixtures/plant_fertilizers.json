@@ -1,0 +1,92 @@
+[
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 1,
+    "fields": {
+      "base_plant": 1,
+      "base_fertilizer": 2,
+      "season": "sp",
+      "range": 14
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 2,
+    "fields": {
+      "base_plant": 1,
+      "base_fertilizer": 2,
+      "season": "su",
+      "range": 14
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 3,
+    "fields": {
+      "base_plant": 2,
+      "base_fertilizer": 1,
+      "season": "su",
+      "range": 30
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 4,
+    "fields": {
+      "base_plant": 3,
+      "base_fertilizer": 1,
+      "season": "su",
+      "range": 14
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 5,
+    "fields": {
+      "base_plant": 3,
+      "base_fertilizer": 2,
+      "season": "sp",
+      "range": 7
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 6,
+    "fields": {
+      "base_plant": 4,
+      "base_fertilizer": 1,
+      "season": "sp",
+      "range": 14
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 7,
+    "fields": {
+      "base_plant": 5,
+      "base_fertilizer": 1,
+      "season": "su",
+      "range": 30
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 8,
+    "fields": {
+      "base_plant": 6,
+      "base_fertilizer": 3,
+      "season": "sp",
+      "range": 15
+    }
+  },
+  {
+    "model": "encyclopedia.plantFertilizer",
+    "pk": 9,
+    "fields": {
+      "base_plant": 6,
+      "base_fertilizer": 3,
+      "season": "su",
+      "range": 15
+    }
+  }
+]

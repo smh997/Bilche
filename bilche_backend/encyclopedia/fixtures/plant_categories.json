@@ -1,0 +1,114 @@
+[
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 1,
+    "fields": {
+      "base_plant": 1,
+      "category": 3
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 2,
+    "fields": {
+      "base_plant": 1,
+      "category": 4
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 3,
+    "fields": {
+      "base_plant": 2,
+      "category": 5
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 4,
+    "fields": {
+      "base_plant": 2,
+      "category": 1
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 5,
+    "fields": {
+      "base_plant": 2,
+      "category": 2
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 6,
+    "fields": {
+      "base_plant": 3,
+      "category": 1
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 7,
+    "fields": {
+      "base_plant": 3,
+      "category": 2
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 8,
+    "fields": {
+      "base_plant": 3,
+      "category": 5
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 9,
+    "fields": {
+      "base_plant": 4,
+      "category": 2
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 10,
+    "fields": {
+      "base_plant": 4,
+      "category": 1
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 11,
+    "fields": {
+      "base_plant": 5,
+      "category": 4
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 12,
+    "fields": {
+      "base_plant": 5,
+      "category": 5
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 13,
+    "fields": {
+      "base_plant": 6,
+      "category": 2
+    }
+  },
+  {
+    "model": "encyclopedia.plantCategory",
+    "pk": 14,
+    "fields": {
+      "base_plant": 6,
+      "category": 3
+    }
+  }
+]
