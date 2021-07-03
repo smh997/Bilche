@@ -39,4 +39,5 @@ class ShadowColor {
   static const Color card = Color.fromRGBO(77, 77, 77, 0.1);
   static const Color button = Color.fromRGBO(1, 77, 33, 0.28);
   static const Color tabItems = Color.fromRGBO(165, 79, 2, 0.2);
+  static const Color input = Color.fromRGBO(0, 0, 0, 0.08);
 }

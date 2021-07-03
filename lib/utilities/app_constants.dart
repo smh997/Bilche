@@ -14,6 +14,7 @@ const hugeSpacing = d20;
 
 //Paddings
 const scaffoldPadding = const EdgeInsets.all(d16);
+const inputPadding = mediumPadding;
 const cardPadding = const EdgeInsets.all(d20);
 const regularPadding = const EdgeInsets.all(d8);
 const mediumPadding = const EdgeInsets.all(d12);
@@ -39,6 +40,11 @@ const tabItemShadow = const BoxShadow(
   color: ShadowColor.tabItems,
   blurRadius: mediumSpacing,
   offset: Offset.zero,
+);
+const inputShadow = const BoxShadow(
+  color: ShadowColor.input,
+  blurRadius: d4,
+  offset: Offset(0.0, 2.0),
 );
 
 //All Sizes
