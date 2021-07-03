@@ -29,11 +29,11 @@ class BasePlant(models.Model):
     cleaning_pot = models.BooleanField(default=False)
     light_choices = (
         ('d', 'مستقیم'),
-        ('id', 'غیر مستقیم'),
-        ('lo', 'کم‌نور'),
+        ('i', 'غیر مستقیم'),
+        ('l', 'کم‌نور'),
         ('a', 'نور مصنوعی')
     )
-    light = models.CharField(max_length=2, choices=light_choices)
+    light = models.CharField(max_length=1, choices=light_choices)
     temperature_choices = (
         ('r', 'دمای اتاق'),
     )
