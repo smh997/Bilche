@@ -1,4 +1,4 @@
-import 'package:bilche/screens/assistant_page/assistant_page.dart';
+import 'package:bilche/screens/sign_in/sign_in.dart';
 import 'package:bilche/utilities/themes/themes_config.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: BTheme.light,
-      home: AssistantPage(),
+      home: SignInPage(),
     );
   }
 }

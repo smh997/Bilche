@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class BTypography {
+  static const fontFamily = 'IRANSansMobile(FaNum)';
   static TextStyle _base = TextStyle(
-    fontFamily: 'IRANSansMobile(FaNum)',
+    fontFamily: fontFamily,
     fontSize: 14.0,
     height: 1.7,
     fontWeight: FontWeight.normal,
