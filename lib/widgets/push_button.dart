@@ -12,11 +12,13 @@ class BPushButton extends StatelessWidget {
       this.icon,
       this.onTap,
       this.type = ButtonType.Contained,
-      this.isRound = false});
+      this.isRound = false,
+      this.isPrimaryButton = false});
 
   final String? text;
   final IconData? icon;
   final bool isRound;
+  final bool isPrimaryButton;
   final ButtonType type;
   final VoidCallback? onTap;
 
@@ -30,6 +32,7 @@ class BPushButton extends StatelessWidget {
       child: Container(
         padding: buttonPadding,
         height: buttonHeight,
+        width: isPrimaryButton ? double.infinity : null,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: type == ButtonType.Contained ? containedColor : null,
@@ -40,16 +43,14 @@ class BPushButton extends StatelessWidget {
         child: Wrap(
           alignment: WrapAlignment.center,
           crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: captionSpacing,
           children: [
             if (icon != null)
-              Padding(
-                padding: const EdgeInsets.only(left: normalSpacing),
-                child: Icon(
-                  icon,
-                  color: type == ButtonType.Contained
-                      ? GrayColor.white
-                      : containedColor,
-                ),
+              Icon(
+                icon,
+                color: type == ButtonType.Contained
+                    ? GrayColor.white
+                    : containedColor,
               ),
             Text(
               text ?? '',

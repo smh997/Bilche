@@ -53,6 +53,7 @@ const double d8 = 8.0;
 const double d12 = 12.0;
 const double d16 = 16.0;
 const double d20 = 20.0;
+const double d24 = 24.0;
 const double d36 = 36.0;
 const double d48 = 48.0;
 const double d56 = 56.0;
