@@ -7,9 +7,7 @@ from home_page.serializers import FeedbackSerializer, SubscribeSerializer, Insta
 
 
 class FeedbackAPIView(CreateAPIView):
-    def get_serializer_class(self):
-        self.serializer_class = FeedbackSerializer
-        return self.serializer_class
+    serializer_class = FeedbackSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -23,9 +21,7 @@ class FeedbackAPIView(CreateAPIView):
 
 
 class SubscribeAPIView(CreateAPIView):
-    def get_serializer_class(self):
-        self.serializer_class = SubscribeSerializer
-        return self.serializer_class
+    serializer_class = SubscribeSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -38,9 +34,7 @@ class SubscribeAPIView(CreateAPIView):
 
 
 class InstallappAPIView(CreateAPIView):
-    def get_serializer_class(self):
-        self.serializer_class = InstallappSerializer
-        return self.serializer_class
+    serializer_class = InstallappSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
