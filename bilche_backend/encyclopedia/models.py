@@ -1,6 +1,8 @@
 from django.db import models
 from colorfield.fields import ColorField
 
+from accounts.models import User
+
 
 class BasePlant(models.Model):
     title = models.CharField(max_length=50, unique=True, error_messages={
@@ -52,14 +54,14 @@ class BasePlant(models.Model):
     soil_type = models.CharField(max_length=1, choices=soil_type_choices)
     toxic = models.BooleanField(default=False)
     irritant = models.BooleanField(default=False)
-    life_span = models.IntegerField(null=True)  # year
+    life_span = models.IntegerField()  # year
     flower_time = models.TextField()
     leaf_time = models.TextField()
     max_height = models.FloatField()  # cm
     max_width = models.FloatField()  # cm
     flower_type = models.TextField()
     leaf_type = models.TextField()
-    change_pot = models.IntegerField()  # year
+    change_pot = models.IntegerField(null=True)  # year
     pot_type_choices = (
         ('p', 'پلاستیکی'),
         ('e', 'سفالی')
@@ -166,4 +168,17 @@ class ContentTag(models.Model):
     content = models.ForeignKey(Content, on_delete=models.CASCADE, related_name='tags')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='contents')
 
+
+class ReportToEdit(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reports_to_edit')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='reports')
+    text = models.TextField()
+
+
+class FavoritePlant(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorite_plants')
+    base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='lovers')
+
+    class Meta:
+        unique_together = (("user", "base_plant"),)
 
