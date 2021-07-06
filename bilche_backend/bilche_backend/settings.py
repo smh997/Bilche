@@ -169,3 +169,26 @@ DEFAULT_FROM_EMAIL = 'smh10.mh@gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'Bilche.tech@gmail.com'
 EMAIL_HOST_PASSWORD = 'AliMohammadSharifi@BilChe1400'
+
+SWAGGER_SETTINGS = {
+    'SHOW_REQUEST_HEADERS': True,
+
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+}
+
+REDOC_SETTINGS = {
+   'LAZY_RENDERING': False,
+   'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+}

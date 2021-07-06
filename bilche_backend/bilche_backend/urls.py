@@ -9,12 +9,12 @@ from django.conf.urls.static import static
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Snippets API",
+      title="Bilche API",
       default_version='v1',
-      description="Test description",
+      description="Bilche.co",
       terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
-      license=openapi.License(name="Test License"),
+      contact=openapi.Contact(email="Bilche.tech@gmail.com"),
+      license=openapi.License(name="Bilche License"),
    ),
    public=True,
    permission_classes=(permissions.AllowAny,),
