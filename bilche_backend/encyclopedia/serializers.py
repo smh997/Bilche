@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from encyclopedia.models import BasePlant
+from encyclopedia.models import BasePlant, ReportToEdit, FavoritePlant
 
 
 class BasePlantListSerializer(serializers.ModelSerializer):
@@ -21,6 +21,7 @@ class BasePlantObjectSerializer(serializers.ModelSerializer):
     waterings = serializers.SerializerMethodField()
     fertilizers = serializers.SerializerMethodField()
     colors = serializers.SerializerMethodField()
+    like = serializers.SerializerMethodField()
 
     class Meta:
         model = BasePlant
@@ -44,3 +45,23 @@ class BasePlantObjectSerializer(serializers.ModelSerializer):
 
     def get_colors(self, base_plant):
         return [color for color in base_plant.flower_colors.values_list('flower_color__color_code', 'flower_color__color_name')]
+
+    def get_like(self, base_plant):
+        request = self.context.get("request")
+        if request and hasattr(request, "user"):
+            return True if FavoritePlant.objects.filter(user=request.user, base_plant=base_plant).exists() else False
+        return False
+
+
+class ReportToEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReportToEdit
+        fields = '__all__'
+        extra_kwargs = {'base_plant': {'required': False, 'read_only': True}, 'user': {'required': False, 'read_only': True}}
+
+
+class FavoritePlantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FavoritePlant
+        fields = '__all__'
+        extra_kwargs = {'base_plant': {'required': False, 'read_only': True}, 'user': {'required': False, 'read_only': True}}
