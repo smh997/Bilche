@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'django_filters',
     'accounts',
     'home_page',
-    'encyclopedia'
+    'encyclopedia',
+    'assistants'
 ]
 
 MIDDLEWARE = [
