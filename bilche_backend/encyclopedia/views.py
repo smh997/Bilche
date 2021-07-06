@@ -1,11 +1,18 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework.filters import SearchFilter
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
 
-from encyclopedia.models import BasePlant, PlantCategory
-from encyclopedia.serializers import BasePlantListSerializer, BasePlantObjectSerializer
+from rest_framework.filters import SearchFilter
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from encyclopedia.models import BasePlant, FavoritePlant
+from encyclopedia.serializers import BasePlantListSerializer, BasePlantObjectSerializer, ReportToEditSerializer, \
+    FavoritePlantSerializer
 
 
 class SearchAPIView(ListAPIView):
@@ -59,3 +66,43 @@ class GetBasePlantAPIView(RetrieveAPIView):
     serializer_class = BasePlantObjectSerializer
     queryset = BasePlant.objects.all()
     lookup_field = 'pk'
+
+
+class ReportEditPlantAPIView(CreateAPIView):
+    serializer_class = ReportToEditSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get_serializer(self, *args, **kwargs):
+        self.request.data['base_plant'] = self.kwargs.get('id')
+        self.request.data['user'] = self.request.user.id
+        serializer_class = self.get_serializer_class()
+        kwargs.setdefault('context', self.get_serializer_context())
+        return serializer_class(*args, **kwargs)
+
+
+class FavoritePlantAPIView(APIView):
+    serializer_class = FavoritePlantSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get_serializer(self, *args, **kwargs):
+        self.request.data['base_plant'] = self.kwargs.get('id')
+        self.request.data['user'] = self.request.user.id
+        serializer_class = self.serializer_class
+        return serializer_class(*args, **kwargs)
+
+    @swagger_auto_schema()
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        base_plant = BasePlant.objects.get(pk=request.data.get('base_plant'))
+        like, created = FavoritePlant.objects.get_or_create(user=request.user, base_plant=base_plant)
+        if not created:
+            like.delete()
+        else:
+            like.save()
+        return Response(status=status.HTTP_200_OK)
+
+
+
