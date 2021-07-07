@@ -6,10 +6,9 @@
       <div class="show-button desktop">مشاهده همه</div>
     </div>
     <div class="cards-container">
-      <div v-for="i in 6" :key="i" class="card">
+      <div v-for="plant in plants" :key="plant" class="card">
         <img class="card-image" src="/img/big-card-image.svg" />
-        <div class="card-title">کاکتوس</div>
-        <div class="card-subtitle">2.4 دنبال کننده</div>
+        <div class="card-title">{{ plant.name }}</div>
       </div>
     </div>
     <div class="show-button mobile">مشاهده همه</div>
@@ -19,6 +18,40 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'PopularPlants',
+  data: () => ({
+    plants: [
+      {
+        name: 'شمعدونی',
+        id: '',
+        image: '',
+      },
+      {
+        name: 'حسن یوسف',
+        id: '',
+        image: '',
+      },
+      {
+        name: 'سانسوریا',
+        id: '',
+        image: '',
+      },
+      {
+        name: 'زامیفولیا',
+        id: '',
+        image: '/img/zamifoolia.svg',
+      },
+      {
+        name: 'دیفن باخیا',
+        id: '',
+        image: '',
+      },
+      {
+        name: 'اشک تمساح',
+        id: '',
+        image: '',
+      },
+    ],
+  }),
 })
 </script>
 <style lang="scss" scoped>
