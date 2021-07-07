@@ -3,7 +3,11 @@
     <div class="comments-container">
       <div class="title">نظرات کاربران:</div>
       <vue-slick-carousel v-bind="carouselSettings">
-        <div v-for="(comment, index) in 3" :key="index" class="outer-container">
+        <div
+          v-for="(comment, index) in comments"
+          :key="index"
+          class="outer-container"
+        >
           <div id="feature-1" class="comment-container">
             <img class="qoute-icon" src="/img/comments-qoute.svg" />
             <div class="comment-text">
@@ -51,13 +55,24 @@ import Avatar from '~/components/Avatar.vue'
 export default Vue.extend({
   name: 'Comments',
   components: { VueSlickCarousel, Avatar },
-  props: {
-    comments: {
-      type: Array,
-      default: () => [],
-    },
-  },
   data: () => ({
+    comments: [
+      {
+        name: '',
+        comment:
+          'داخل منزل ما پر از گل و گیاه است. پدر من به شدت به نگهداری از گل و گیاه علاقه‌مند بوده و هست اما هیچ‌وقت یک مرجع اطلاعاتی خوب، جایی برای ثبت وضعیت گیاهانش و مدیریت اطلاعات این تعداد زیاد گیاه نداشت. بیلچه به پدرم کمک کرد تا با وجود فراموش‌کاری، همیشه از آخرین وضعیت هر گیاهش خبر داشته باشد و راه حل و طریقه‌ی انجام هر کاری در مورد آن‌ها را پیدا کند.',
+      },
+      {
+        name: '',
+        comment:
+          'مادرم علاقه زیادی به گل و گیاه داره و همیشه دوست داره گیاهان جدید بخره ولی چون روش نگهداری شون رو بلد نیست همیشه تجربه‌ی بدی داشت و اغلب اوقات خراب میشدن. حالا با بیلچه تونستیم اطلاعات خوبی کسب کنیم و راه و روش نگهداری از گیاهان جدید رو یاد بگیریم.',
+      },
+      {
+        name: '',
+        comment:
+          'من همیشه در نگهداری از کاکتوس هایم مشکل داشتم چون هیچوقت اسم و گونه آنها را نمیشناختم و نمیدانستم میزان آب و نور و... مورد نیازشان چیست و در اکثر موارد در نگهداری از آن ها با شکست مواجه می‌شدم. بیلچه به من در تکرار نشدن این تجربه‌های بد کمک زیادی می‌کند و باعث شده بدون احساس گناه از خشکاندن گیاه وقتی گیاه زیبایی میبینم بخرم',
+      },
+    ],
     carouselSettings: {
       itemsToShow: 1,
       dots: false,
@@ -118,7 +133,7 @@ export default Vue.extend({
 }
 .comment-text {
   font-size: 16px;
-  line-height: 19px;
+  line-height: 22px;
   text-align: right;
   color: $gray-10;
 }
