@@ -25,8 +25,8 @@
         <pagination
           class="pagination"
           style="width: 100%"
-          :count="10"
-          :value="2"
+          :count="1"
+          :value="pageNumber + 1"
         />
       </div>
     </div>
@@ -36,46 +36,92 @@
 import Vue from 'vue'
 
 // components
+import { typedMapState } from 'vuex-module-accessor'
 import SearchFilters from '~/components/SearchFilters.vue'
 import PlantCard from '~/components/PlantCard.vue'
 import Pagination from '~/components/Pagination.vue'
 
+// store
+import search, { SearchModule } from '~/store/search'
+
 export default Vue.extend({
   components: { SearchFilters, PlantCard, Pagination },
-  data: () => ({
-    plants: [
-      {
-        id: 1,
-        title: 'شمعدانی',
-        picture: '/img/plants/p1_1.jpg',
+  data: () => ({}),
+  computed: {
+    searchStore(): SearchModule {
+      return search.of(this.$store)
+    },
+    ...typedMapState(search, {
+      plants: (state) => state.plants,
+    }),
+    pageNumber: {
+      set(value: number) {
+        this.searchStore.pageNumber = value
       },
-      {
-        id: 2,
-        title: 'زامیفولیا',
-        picture: '/img/plants/p2_1.jpg',
+      get(): number {
+        return this.searchStore.state.pageNumber
       },
-      {
-        id: 3,
-        title: 'سانسوریا',
-        picture: '/img/plants/p3_1.jpg',
+    },
+    toxic: {
+      set(value: boolean) {
+        this.searchStore.toxic = value
       },
-      {
-        id: 4,
-        title: 'دیفن باخیا',
-        picture: '/img/plants/p4_1.jpg',
+      get(): boolean | undefined {
+        return this.searchStore.state.toxic
       },
-      {
-        id: 5,
-        title: 'اشک',
-        picture: '/img/plants/p5_1.jpg',
+    },
+    irritant: {
+      set(value: boolean) {
+        this.searchStore.irritant = value
       },
-      {
-        id: 6,
-        title: 'حسن یوسف',
-        picture: '/img/plants/p6_1.jpg',
+      get(): boolean | undefined {
+        return this.searchStore.state.irritant
       },
-    ],
-  }),
+    },
+    lifeSpan: {
+      set(value: number | undefined) {
+        this.searchStore.lifeSpan = value
+      },
+      get(): number | undefined {
+        return this.searchStore.state.lifeSpan
+      },
+    },
+    pruning: {
+      set(value: boolean) {
+        this.searchStore.pruning = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.pruning
+      },
+    },
+    fogging: {
+      set(value: boolean) {
+        this.searchStore.fogging = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.fogging
+      },
+    },
+    cleaningPot: {
+      set(value: boolean) {
+        this.searchStore.cleaningPot = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.cleaningPot
+      },
+    },
+    cleaningLeaves: {
+      set(value: boolean) {
+        this.searchStore.cleaningLeaves = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.cleaningLeaves
+      },
+    },
+  },
+  beforeMount() {
+    this.searchStore.searchPlants()
+  },
 })
 </script>
 <style lang="scss" scoped>
@@ -144,6 +190,8 @@ export default Vue.extend({
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 700px;
   }
 }
 .pagination {
