@@ -29,12 +29,12 @@
     </div>
     <div class="filter-box">
       <div class="filter-body">
-        <ig-switch label="حساسیت زا نبودن" />
-        <ig-switch label="سمی نبودن" />
-        <ig-switch label="نیاز به هرس کردن" />
-        <ig-switch label="نیاز به مه پاشی" />
-        <ig-switch label="نیاز به تمیزکاری گلدان" />
-        <ig-switch label="نیاز به تمیزکاری برگ ها" />
+        <ig-switch v-model="irritant" label="حساسیت زا نبودن" />
+        <ig-switch v-model="toxic" label="سمی نبودن" />
+        <ig-switch v-model="pruning" label="نیاز به هرس کردن" />
+        <ig-switch v-model="fogging" label="نیاز به مه پاشی" />
+        <ig-switch v-model="cleaningPot" label="نیاز به تمیزکاری گلدان" />
+        <ig-switch v-model="cleaningLeaves" label="نیاز به تمیزکاری برگ ها" />
       </div>
     </div>
     <!-- <ig-modal class="desktop" name="filters" :value="true">
@@ -68,9 +68,73 @@ import IgCheckbox from '~/components/IgCheckbox.vue'
 import IgSwitch from '~/components/IgSwitch.vue'
 // import IgModal from '~/components/IgModal.vue'
 
+// store
+import search, { SearchModule } from '~/store/search'
+
 export default Vue.extend({
   components: { IgCheckbox, IgSwitch },
   data: () => ({}),
+  computed: {
+    searchStore(): SearchModule {
+      return search.of(this.$store)
+    },
+    toxic: {
+      set(value: boolean) {
+        this.searchStore.toxic = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.toxic
+      },
+    },
+    irritant: {
+      set(value: boolean) {
+        this.searchStore.irritant = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.irritant
+      },
+    },
+    lifeSpan: {
+      set(value: number | undefined) {
+        this.searchStore.lifeSpan = value
+      },
+      get(): number | undefined {
+        return this.searchStore.state.lifeSpan
+      },
+    },
+    pruning: {
+      set(value: boolean) {
+        this.searchStore.pruning = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.pruning
+      },
+    },
+    fogging: {
+      set(value: boolean) {
+        this.searchStore.fogging = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.fogging
+      },
+    },
+    cleaningPot: {
+      set(value: boolean) {
+        this.searchStore.cleaningPot = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.cleaningPot
+      },
+    },
+    cleaningLeaves: {
+      set(value: boolean) {
+        this.searchStore.cleaningLeaves = value
+      },
+      get(): boolean | undefined {
+        return this.searchStore.state.cleaningLeaves
+      },
+    },
+  },
 })
 </script>
 <style lang="scss" scoped>

@@ -62,62 +62,6 @@ export default Vue.extend({
         return this.searchStore.state.pageNumber
       },
     },
-    toxic: {
-      set(value: boolean) {
-        this.searchStore.toxic = value
-      },
-      get(): boolean | undefined {
-        return this.searchStore.state.toxic
-      },
-    },
-    irritant: {
-      set(value: boolean) {
-        this.searchStore.irritant = value
-      },
-      get(): boolean | undefined {
-        return this.searchStore.state.irritant
-      },
-    },
-    lifeSpan: {
-      set(value: number | undefined) {
-        this.searchStore.lifeSpan = value
-      },
-      get(): number | undefined {
-        return this.searchStore.state.lifeSpan
-      },
-    },
-    pruning: {
-      set(value: boolean) {
-        this.searchStore.pruning = value
-      },
-      get(): boolean | undefined {
-        return this.searchStore.state.pruning
-      },
-    },
-    fogging: {
-      set(value: boolean) {
-        this.searchStore.fogging = value
-      },
-      get(): boolean | undefined {
-        return this.searchStore.state.fogging
-      },
-    },
-    cleaningPot: {
-      set(value: boolean) {
-        this.searchStore.cleaningPot = value
-      },
-      get(): boolean | undefined {
-        return this.searchStore.state.cleaningPot
-      },
-    },
-    cleaningLeaves: {
-      set(value: boolean) {
-        this.searchStore.cleaningLeaves = value
-      },
-      get(): boolean | undefined {
-        return this.searchStore.state.cleaningLeaves
-      },
-    },
   },
   beforeMount() {
     this.searchStore.searchPlants()
