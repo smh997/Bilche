@@ -3,16 +3,21 @@ import Vue from 'vue'
 import { ModuleAccessor, Module, mutation } from 'vuex-module-accessor'
 
 // lib
-// import { phoneNumberValidation } from '~/lib/utils/validations'
+import {
+  phoneNumberValidation,
+  validateEmail,
+} from '~/lib/types/utils/validations'
 
 // apis
+import { ApiApi } from '~/api'
+const api = new ApiApi()
 
 // types
 export type Token = string | null
 class AuthState {
   token: Token = null
   // phonenumber
-  phoneNumber: string = ''
+  phoneNumber: string | null = ''
   showLoginModal: boolean = false
   isPhoneNumberValid: boolean = true
   // firstName
@@ -21,6 +26,9 @@ class AuthState {
   // password
   password: string = ''
   passwordValid: boolean = true
+  // email
+  email: string = ''
+  emailValid: boolean = true
   // valid
   allValid: boolean = true
   // user uuid
@@ -82,19 +90,27 @@ export class AuthModule extends Module<AuthState> {
     }
   }
 
+  set showLoginModal(is: boolean) {
+    this.state.showLoginModal = is
+  }
+
+  get showLoginModal(): boolean {
+    return this.state.showLoginModal
+  }
+
   /**
    * set user phone number
    *
    * @memberof AuthModule
    */
-  set phoneNumber(phoneNumber: string) {
+  set phoneNumber(phoneNumber: string | null) {
     if (!this.state.isPhoneNumberValid) {
       // this.state.isPhoneNumberValid = phoneNumberValidation(phoneNumber)
     }
     this.state.phoneNumber = phoneNumber
   }
 
-  get phoneNumber(): string {
+  get phoneNumber(): string | null {
     return this.state.phoneNumber
   }
 
@@ -137,6 +153,30 @@ export class AuthModule extends Module<AuthState> {
     return this.state.password
   }
 
+  set passwordValid(passwordValid: boolean) {
+    this.state.passwordValid = passwordValid
+  }
+
+  get passwordValid(): boolean {
+    return this.state.passwordValid
+  }
+
+  set email(email: string) {
+    this.state.email = email
+  }
+
+  get email(): string {
+    return this.state.email
+  }
+
+  set emailValid(emailValid: boolean) {
+    this.state.emailValid = emailValid
+  }
+
+  get emailValid(): boolean {
+    return this.state.emailValid
+  }
+
   @mutation
   private resetState() {
     this.state.phoneNumber = ''
@@ -145,6 +185,8 @@ export class AuthModule extends Module<AuthState> {
     this.state.nameValid = true
     this.state.password = ''
     this.state.passwordValid = true
+    this.state.email = ''
+    this.state.emailValid = true
     this.state.allValid = true
   }
 
@@ -158,16 +200,47 @@ export class AuthModule extends Module<AuthState> {
   @mutation
   private checkRegisterForm() {
     this.state.allValid = true
-    this.state.nameValid = true
     this.state.passwordValid = true
+    this.state.emailValid = true
+    this.state.isPhoneNumberValid = true
 
-    if (this.state.name === '') {
-      this.state.nameValid = false
-      this.state.allValid = false
-    }
     if (this.state.password === '') {
       this.state.passwordValid = false
       this.state.allValid = false
+    }
+    if (!validateEmail(this.state.email)) {
+      this.state.emailValid = false
+      this.state.allValid = false
+    }
+    if (this.state.phoneNumber && this.state.phoneNumber.length > 0) {
+      if (!phoneNumberValidation(this.state.phoneNumber)) {
+        this.state.isPhoneNumberValid = false
+        this.state.allValid = false
+      }
+    }
+  }
+
+  /**
+   *	check register form validation
+   *
+   * @memberof AuthModule
+   */
+  @mutation
+  private checkLoginForm() {
+    this.state.allValid = true
+    this.state.passwordValid = true
+    this.state.isPhoneNumberValid = true
+
+    if (this.state.password === '') {
+      this.state.passwordValid = false
+      this.state.allValid = false
+    }
+    if (!validateEmail(this.state.email)) {
+      this.state.emailValid = false
+      this.state.allValid = false
+    }
+    if (this.state.phoneNumber?.length === 0) {
+      this.state.phoneNumber = null
     }
   }
 
@@ -194,17 +267,18 @@ export class AuthModule extends Module<AuthState> {
    *
    * @memberof AuthModule
    */
-  registerUser() {
+  async registerUser() {
     this.checkRegisterForm()
     if (this.state.allValid) {
       try {
-        // await userSingUp.apiUsersRegisterPost({
-        //   username: this.state.phoneNumber,
-        //   name: this.state.name,
-        //   password: this.state.password,
-        //   acceptedEULA: true,
-        // })
-        this.login()
+        await api.createUser({
+          email: this.state.email,
+          fullname: this.state.name,
+          password: this.state.password,
+          phone_number: this.state.phoneNumber,
+        })
+        Vue.toasted.success('از اینکه به جمع ما پیوستی خوشحالیم:)')
+        // this.login()
       } catch (error) {}
     }
   }
@@ -214,19 +288,18 @@ export class AuthModule extends Module<AuthState> {
    *
    * @memberof AuthModule
    */
-  login() {
-    // if (phoneNumberValidation(this.state.phoneNumber)) {
-    try {
-      // const response = await userLogin.apiUsersLoginPost({
-      //   username: this.state.phoneNumber,
-      //   password: this.state.password,
-      // })
-      // this.setToken(response.data.token)
-      this.resetState()
-    } catch (error) {}
-    // } else {
-    //   this.isPhoneNumberValid = false
-    // }
+  async login() {
+    this.checkLoginForm()
+    if (this.state.allValid) {
+      try {
+        const response = await api.createMyAuthToken({
+          username: this.state.email,
+          password: this.state.password,
+        })
+        this.setToken(response.data.token)
+        this.resetState()
+      } catch (error) {}
+    }
   }
 
   /**
@@ -234,16 +307,17 @@ export class AuthModule extends Module<AuthState> {
    *
    * @memberof AuthModule
    */
-  sendResetPasswordToken() {
-    // if (phoneNumberValidation(this.state.phoneNumber)) {
-    try {
-      // await userLogin.apiUsersResetPasswordTokenPost({
-      //   username: this.state.phoneNumber,
-      // })
-    } catch (error) {}
-    // } else {
-    this.isPhoneNumberValid = false
-    // }
+  async sendResetPasswordToken() {
+    this.emailValid = true
+    if (validateEmail(this.state.email)) {
+      try {
+        await api.createEmail({
+          email: this.state.email,
+        })
+      } catch (error) {}
+    } else {
+      this.emailValid = false
+    }
   }
 
   /**
@@ -251,36 +325,18 @@ export class AuthModule extends Module<AuthState> {
    *
    * @memberof AuthModule
    */
-  resetPassword() {
-    this.checkResetPassForm()
-    if (this.state.allValid) {
+  async resetPassword(payload: { token: string }) {
+    if (this.state.password !== '') {
       try {
-        // await userLogin.apiUsersResetPasswordPost({
-        //   username: this.state.phoneNumber,
-        //   resetToken: this.state.otpCode,
-        //   newPassword: this.state.password,
-        // })
-        this.login()
-      } catch (error) {}
-    }
-  }
-
-  /**
-   *	change user password
-   *
-   * @memberof AuthModule
-   */
-  changeUserPass() {
-    this.checkResetPassForm()
-    if (this.state.allValid) {
-      try {
-        // await userLogin.apiUsersChangePasswordPut({
-        //   currentPassword: this.state.currentPassword,
-        //   newPassword: this.state.password,
-        // })
-        Vue.toasted.show('رمز عبور تغییر کرد.', { type: 'success' })
+        await api.createPasswordToken({
+          password: this.state.password,
+          token: payload.token,
+        })
+        Vue.toasted.success('رمز عبور با موفقیت تغییر کرد')
         this.resetState()
       } catch (error) {}
+    } else {
+      this.passwordValid = false
     }
   }
 

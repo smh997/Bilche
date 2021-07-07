@@ -1,5 +1,5 @@
 <template>
-  <ig-modal name="sign-up" :value="showSignUpModal" :width="480">
+  <ig-modal v-model="showLoginModal" name="sign-up" :width="480">
     <div class="modal-header">
       <ig-icon
         type="far"
@@ -16,7 +16,7 @@
         :size="32"
         color="#4D4D4D"
         style="cursor: pointer"
-        @click="showSignUpModal = false"
+        @click="showLoginModal = false"
       />
     </div>
     <div class="modal-body">
@@ -25,44 +25,39 @@
       </div>
       <ig-input
         v-if="signUpStep === 'SignUp'"
+        v-model="fullName"
         class="info-input"
         placeholder="نام و نام خانوادگی"
       />
       <ig-input
-        v-if="signUpStep !== 'ChangePass'"
+        v-model="email"
         class="info-input"
         required
-        placeholder="پست الکترونیکی"
+        :invalid="!emailValid"
+        placeholder="* پست الکترونیکی"
       />
       <ig-input
         v-if="signUpStep === 'SignUp'"
+        v-model="phoneNumber"
         class="info-input"
-        required
+        :invalid="!isPhoneNumberValid"
         placeholder="شماره همراه"
       />
       <ig-input
         v-if="signUpStep !== 'ChangePass'"
+        v-model="password"
         class="info-input"
         required
-        placeholder="رمز عبور"
-      />
-      <ig-input
-        v-if="signUpStep === 'ChangePass'"
-        class="info-input"
-        required
-        placeholder="کد یکبار مصرف"
-      />
-      <ig-input
-        v-if="signUpStep === 'ChangePass'"
-        class="info-input"
-        required
-        placeholder="رمز عبور جدید"
+        :invalid="!passwordValid"
+        placeholder="* رمز عبور"
       />
       <ig-button
         class="modal-button"
         type="secondary"
         secondary-color="green"
         size="big"
+        :loading="loading"
+        @click="submit"
       >
         {{ ButtonText }}
       </ig-button>
@@ -74,6 +69,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import { typedMapState } from 'vuex-module-accessor'
 
 // components
 import IgModal from '~/components/IgModal.vue'
@@ -81,14 +77,26 @@ import IgIcon from '~/components/IgIcon.vue'
 import IgInput from '~/components/IgInput.vue'
 import IgButton from '~/components/IgButton.vue'
 
+// store
+import auth, { AuthModule } from '~/store/auth'
+
 export default Vue.extend({
   name: 'LoginModal',
   components: { IgModal, IgIcon, IgInput, IgButton },
   data: () => ({
-    showSignUpModal: false,
     signUpStep: 'SignUp',
+    loading: false,
   }),
   computed: {
+    authStore(): AuthModule {
+      return auth.of(this.$store)
+    },
+    ...typedMapState(auth, {
+      isPhoneNumberValid: (state) => state.isPhoneNumberValid,
+      nameValid: (state) => state.nameValid,
+      passwordValid: (state) => state.passwordValid,
+      emailValid: (state) => state.emailValid,
+    }),
     ModalTitle(): string {
       if (this.signUpStep === 'SignUp') {
         return 'ثبت نام'
@@ -116,6 +124,46 @@ export default Vue.extend({
         return 'تغییر رمز عبور'
       }
     },
+    showLoginModal: {
+      set(value: boolean) {
+        this.authStore.showLoginModal = value
+      },
+      get(): boolean {
+        return this.authStore.state.showLoginModal
+      },
+    },
+    fullName: {
+      set(value: string) {
+        this.authStore.name = value
+      },
+      get(): string {
+        return this.authStore.state.name
+      },
+    },
+    phoneNumber: {
+      set(value: string) {
+        this.authStore.phoneNumber = value
+      },
+      get(): string | null {
+        return this.authStore.state.phoneNumber
+      },
+    },
+    email: {
+      set(value: string) {
+        this.authStore.email = value
+      },
+      get(): string {
+        return this.authStore.state.email
+      },
+    },
+    password: {
+      set(value: string) {
+        this.authStore.password = value
+      },
+      get(): string {
+        return this.authStore.state.password
+      },
+    },
   },
   methods: {
     changeStep(isForward: boolean) {
@@ -128,6 +176,17 @@ export default Vue.extend({
       } else {
         this.signUpStep = 'Login'
       }
+    },
+    submit() {
+      this.loading = true
+      if (this.signUpStep === 'SignUp') {
+        this.authStore.registerUser()
+      } else if (this.signUpStep === 'Login') {
+        this.authStore.login()
+      } else {
+        this.authStore.sendResetPasswordToken()
+      }
+      this.loading = false
     },
   },
 })

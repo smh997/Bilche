@@ -31,7 +31,7 @@ export default Vue.extend({
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
   background: $gray-100;
   border-radius: 8px;
-  margin: 8px;
+  margin: 8px 16px;
   .card-image {
     margin-top: 22px;
     width: 185px;

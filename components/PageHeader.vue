@@ -8,9 +8,7 @@
       <nuxt-link class="link" to="/tracking"> دسته بندی گیاهان </nuxt-link>
       <nuxt-link class="link" to="/tracking"> درباره ما </nuxt-link>
       <nuxt-link class="link" to="/tracking"> وبلاگ </nuxt-link>
-      <nuxt-link class="link last-link" to="/tracking">
-        ورود / ثبت نام
-      </nuxt-link>
+      <div class="link last-link" @click="openAuthModal">ورود / ثبت نام</div>
     </div>
     <div class="content mobile">
       <ig-icon-button
@@ -26,11 +24,25 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+
 // import IgIcon from '~/components/IgIcon.vue'
 import IgIconButton from '~/components/IgIconButton.vue'
 
+// store
+import auth, { AuthModule } from '~/store/auth'
+
 export default Vue.extend({
   components: { IgIconButton },
+  computed: {
+    authStore(): AuthModule {
+      return auth.of(this.$store)
+    },
+  },
+  methods: {
+    openAuthModal() {
+      this.authStore.showLoginModal = true
+    },
+  },
 })
 </script>
 <style lang="scss" scoped>
@@ -77,6 +89,7 @@ export default Vue.extend({
   }
   .last-link {
     margin-right: auto;
+    cursor: pointer;
   }
   .social-icons {
     display: inline-flex;
