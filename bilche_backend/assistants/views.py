@@ -30,3 +30,15 @@ class GetSitesAPIView(ListAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
+
+class SiteAPIView(APIView):
+    serializer_class = SiteObjectSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, *args, **kwargs):
+        queryset = Site.objects.all()
+        instance = get_object_or_404(queryset, id=kwargs.get('pk'))
+        serializer = self.serializer_class(instance)
+        return Response(serializer.data)
+
