@@ -8,11 +8,8 @@ axios.interceptors.response.use(
   function (error: AxiosError) {
     if (error.response) {
       if (error?.response?.status !== 401 && error?.response?.status !== 403) {
-        if (error.response.data.errors) {
-          const errors = error.response.data.errors as string[]
-          errors.forEach((error) => {
-            Vue.toasted.error(error)
-          })
+        if (error.response.data.error) {
+          Vue.toasted.error(error.response.data.error)
         } else {
           Vue.toasted.error('خطا !')
         }

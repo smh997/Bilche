@@ -7,14 +7,14 @@
       <div class="subtitle">امکانات اپلیکیشن بیلچه</div>
       <div class="options">
         <div class="options-row">
-          <div class="option">
+          <div class="option first">
             <ig-icon
               class="bullet-icon"
               :size="12"
               icon="circle"
               color="#4D4D4D"
             />
-            امکانات اپلیکیشن بیلچه
+            برنامه ریزی متناسب با گیاه و شرایط
           </div>
           <div class="option">
             <ig-icon
@@ -23,18 +23,18 @@
               icon="circle"
               color="#4D4D4D"
             />
-            امکانات اپلیکیشن بیلچه
+            یادآوری آبیاری و اعمال گیاه
           </div>
         </div>
         <div class="options-row">
-          <div class="option">
+          <div class="option third">
             <ig-icon
               class="bullet-icon"
               :size="12"
               icon="circle"
               color="#4D4D4D"
             />
-            امکانات اپلیکیشن بیلچه
+            تعریف گلخانه‌ها برای مدیریت بهتر
           </div>
           <div class="option">
             <ig-icon
@@ -43,7 +43,7 @@
               icon="circle"
               color="#4D4D4D"
             />
-            امکانات اپلیکیشن بیلچه
+            نمودار عملکرد کاربر در نگهداری از گیاهان
           </div>
         </div>
         <ig-button
@@ -52,8 +52,10 @@
           secondary-color="green"
           size="big"
           style="margin: 0 auto"
-          >دانلود اپلیکیشن</ig-button
+          @click="download('d')"
         >
+          دانلود اپلیکیشن
+        </ig-button>
       </div>
       <div class="download-links desktop">
         <div class="ios-col">
@@ -61,8 +63,16 @@
             <img src="/img/ios.svg" />
           </div>
           <div class="download-col">
-            <img class="download-badge" src="/img/sibapp.svg" />
-            <img class="download-badge" src="/img/sibche.svg" />
+            <img
+              class="download-badge"
+              src="/img/sibapp.svg"
+              @click="download('sa')"
+            />
+            <img
+              class="download-badge"
+              src="/img/sibche.svg"
+              @click="download('s')"
+            />
           </div>
         </div>
         <div class="android-col">
@@ -70,15 +80,30 @@
             <img src="/img/android.svg" />
             <div class="download-row">
               <div class="download-col">
-                <img class="download-badge" src="/img/google-play.svg" />
-                <img class="download-badge" src="/img/bazaar.svg" />
+                <img
+                  class="download-badge"
+                  src="/img/google-play.svg"
+                  @click="download('g')"
+                />
+                <img
+                  class="download-badge"
+                  src="/img/bazaar.svg"
+                  @click="download('b')"
+                />
               </div>
-              <img class="download-badge" src="/img/bilche-dl.svg" />
+              <img
+                class="download-badge"
+                src="/img/bilche-dl.svg"
+                @click="download('d')"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
+    <ig-modal v-model="showDownloadModal" name="download" :width="480">
+      <div class="modal-body">این امکان به زودی اضافه می‌‌‌شود.</div>
+    </ig-modal>
   </div>
 </template>
 <script lang="ts">
@@ -87,10 +112,29 @@ import Vue from 'vue'
 // components
 import IgIcon from '~/components/IgIcon.vue'
 import IgButton from '~/components/IgButton.vue'
+import IgModal from '~/components/IgModal.vue'
+
+// store
+import home, { HomeModule } from '~/store/home'
+import { InstallappApplicationStoreEnum } from '~/api'
 
 export default Vue.extend({
   name: 'AppDownload',
-  components: { IgIcon, IgButton },
+  components: { IgIcon, IgButton, IgModal },
+  data: () => ({
+    showDownloadModal: false,
+  }),
+  computed: {
+    homeStore(): HomeModule {
+      return home.of(this.$store)
+    },
+  },
+  methods: {
+    async download(link: InstallappApplicationStoreEnum) {
+      this.showDownloadModal = true
+      await this.homeStore.download(link)
+    },
+  },
 })
 </script>
 <style lang="scss" scoped>
@@ -128,12 +172,18 @@ export default Vue.extend({
 .options-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
   margin-right: 37px;
   .option {
     display: inline-flex;
+    &.first {
+      margin-left: 100px;
+    }
+    &.third {
+      margin-left: 110px;
+    }
     .bullet-icon {
       margin-left: 8px;
     }
@@ -162,6 +212,11 @@ export default Vue.extend({
     display: flex;
   }
 }
+.modal-body {
+  padding: 24px;
+  text-align: center;
+  font-size: 24px;
+}
 @media (max-width: $app-mobile-max-width) {
   .download-container {
     align-items: flex-start;
@@ -186,11 +241,18 @@ export default Vue.extend({
   }
   .options-row {
     justify-content: center;
+    align-items: flex-start;
     flex-direction: column;
     margin-bottom: 0px;
     margin-right: 0px;
     .option {
       margin-bottom: 12px;
+      &.first {
+        margin-left: 0px;
+      }
+      &.third {
+        margin-left: 80px;
+      }
     }
   }
 }
