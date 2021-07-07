@@ -3,10 +3,11 @@
     <div class="filter-box">
       <div class="filter-title">دسته بندی</div>
       <div class="filter-body">
-        <ig-checkbox label="کاکتوس" />
+        <ig-checkbox label="گیاهان مقاوم" />
         <ig-checkbox label="آپارتمانی" />
         <ig-checkbox label="باغچه" />
-        <ig-checkbox label="سوزنی" />
+        <ig-checkbox label="گلدار" />
+        <ig-checkbox label="کاکتوس و ساکولنت" />
       </div>
     </div>
     <div class="filter-box">
@@ -28,6 +29,8 @@
     </div>
     <div class="filter-box">
       <div class="filter-body">
+        <ig-switch label="حساسیت زا نبودن" />
+        <ig-switch label="سمی نبودن" />
         <ig-switch label="نیاز به هرس کردن" />
         <ig-switch label="نیاز به مه پاشی" />
         <ig-switch label="نیاز به تمیزکاری گلدان" />

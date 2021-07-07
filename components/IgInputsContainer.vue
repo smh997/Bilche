@@ -71,16 +71,15 @@ export default Vue.extend({
 .label {
   margin-bottom: 5px;
   &.disabled-label {
-    // color: $gray-50;
+    color: $gray-50;
   }
 }
 //
 .error-text {
   position: absolute;
-  bottom: 17px;
+  bottom: 0px;
   right: 15px;
-  // background: $gray-100;
-  // color: $alert-red;
+  color: $alert-red;
   padding: 0 5px;
   z-index: 1001;
 }

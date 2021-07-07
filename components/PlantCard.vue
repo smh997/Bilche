@@ -1,14 +1,23 @@
 <template>
   <div class="card">
-    <img class="card-image" src="/img/big-card-image.svg" />
-    <div class="card-title">کاکتوس</div>
-    <div class="card-subtitle">2.4 دنبال کننده</div>
+    <img class="card-image" :src="plantImage" />
+    <div class="card-title">{{ plantName }}</div>
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
   name: 'PlantCard',
+  props: {
+    plantName: {
+      type: String,
+      default: '',
+    },
+    plantImage: {
+      type: String,
+      default: '',
+    },
+  },
 })
 </script>
 <style lang="scss" scoped>
@@ -24,9 +33,9 @@ export default Vue.extend({
   border-radius: 8px;
   margin: 8px;
   .card-image {
-    margin-top: 36px;
+    margin-top: 22px;
     width: 185px;
-    height: 91px;
+    height: 146px;
     margin-bottom: 8px;
   }
   .card-title {

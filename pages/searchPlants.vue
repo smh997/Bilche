@@ -15,7 +15,12 @@
       </div>
       <div class="second-col">
         <div class="plants-container">
-          <plant-card v-for="i in 10" :key="i" />
+          <plant-card
+            v-for="plant in plants"
+            :key="plant.id"
+            :plant-image="plant.picture"
+            :plant-name="plant.title"
+          />
         </div>
         <pagination
           class="pagination"
@@ -37,6 +42,40 @@ import Pagination from '~/components/Pagination.vue'
 
 export default Vue.extend({
   components: { SearchFilters, PlantCard, Pagination },
+  data: () => ({
+    plants: [
+      {
+        id: 1,
+        title: 'شمعدانی',
+        picture: '/img/plants/p1_1.jpg',
+      },
+      {
+        id: 2,
+        title: 'زامیفولیا',
+        picture: '/img/plants/p2_1.jpg',
+      },
+      {
+        id: 3,
+        title: 'سانسوریا',
+        picture: '/img/plants/p3_1.jpg',
+      },
+      {
+        id: 4,
+        title: 'دیفن باخیا',
+        picture: '/img/plants/p4_1.jpg',
+      },
+      {
+        id: 5,
+        title: 'اشک',
+        picture: '/img/plants/p5_1.jpg',
+      },
+      {
+        id: 6,
+        title: 'حسن یوسف',
+        picture: '/img/plants/p6_1.jpg',
+      },
+    ],
+  }),
 })
 </script>
 <style lang="scss" scoped>

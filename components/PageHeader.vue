@@ -45,7 +45,7 @@ export default Vue.extend({
   background: white;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
-  z-index: 100;
+  z-index: 1002;
 }
 .content {
   display: flex;

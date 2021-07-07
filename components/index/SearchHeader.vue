@@ -20,9 +20,13 @@
       <div class="classifications-container">
         <div class="title">انتخاب از دسته بندی</div>
         <div class="cards-container">
-          <div v-for="i in 4" :key="i" class="card-container">
-            <img src="/img/card-image.svg" class="card-image" />
-            <div class="card-title">کاکتوس</div>
+          <div
+            v-for="category in categories"
+            :key="category"
+            class="card-container"
+          >
+            <img :src="category.image" class="card-image" />
+            <div class="card-title">{{ category.title }}</div>
           </div>
         </div>
       </div>
@@ -39,6 +43,30 @@ import IgIcon from '~/components/IgIcon.vue'
 export default Vue.extend({
   name: 'SearchHeader',
   components: { IgIcon },
+  data: () => ({
+    categories: [
+      {
+        title: 'آپارتمانی',
+        image: '/img/apartmani.svg',
+      },
+      {
+        title: 'گیاهان مقاوم',
+        image: '/img/moghavem.svg',
+      },
+      {
+        title: 'باغچه‌ای',
+        image: '/img/baqche.svg',
+      },
+      {
+        title: 'گلدار',
+        image: '/img/goldar.svg',
+      },
+      {
+        title: 'کاکتوس و ساکولنت',
+        image: '/img/cactus&saculnet.svg',
+      },
+    ],
+  }),
 })
 </script>
 <style lang="scss" scoped>

@@ -161,5 +161,8 @@ export default Vue.extend({
   .first-col {
     margin: 0;
   }
+  .vue-app {
+    margin: 0 auto;
+  }
 }
 </style>

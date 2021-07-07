@@ -89,11 +89,11 @@ export default Vue.extend({
   }
 
   &:disabled {
-    // background: $gray-95;
+    background: $gray-95;
     cursor: not-allowed;
     box-shadow: none;
     .icon {
-      // color: $gray-80 !important;
+      color: $gray-80 !important;
     }
   }
 }
