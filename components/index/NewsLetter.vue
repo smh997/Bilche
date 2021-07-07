@@ -9,12 +9,19 @@
           شماره موبایل یا ایمیلت رو وارد کن. قراره با خبرای خوب برگردیم :)
         </div>
         <div class="input-container">
-          <ig-input placeholder="شماره موبایل یا ایمیل" />
+          <ig-input
+            v-model="mobileEmail"
+            required
+            :invalid="!mobileEmailValid"
+            placeholder="شماره موبایل یا ایمیل"
+          />
           <ig-button
             type="secondary"
             secondary-color="green"
             class="submit-button"
             size="big"
+            :loading="loading"
+            @click="submit"
           >
             عضویت
           </ig-button>
@@ -25,14 +32,40 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import { typedMapState } from 'vuex-module-accessor'
 
 // components
 import IgInput from '~/components/IgInput.vue'
 import IgButton from '~/components/IgButton.vue'
 
+// store
+import home, { HomeModule } from '~/store/home'
+
 export default Vue.extend({
   name: 'NewsLetter',
   components: { IgInput, IgButton },
+  data: () => ({
+    mobileEmail: '',
+    loading: false,
+  }),
+  computed: {
+    homeStore(): HomeModule {
+      return home.of(this.$store)
+    },
+    ...typedMapState(home, {
+      mobileEmailValid: (state) => state.newsLetterMobileEmailValid,
+    }),
+  },
+  methods: {
+    async submit() {
+      this.loading = true
+      this.homeStore.newsLetterInputValidation(this.mobileEmail)
+      if (this.mobileEmailValid) {
+        await this.homeStore.newsLetterSubscribe(this.mobileEmail)
+      }
+      this.loading = false
+    },
+  },
 })
 </script>
 <style lang="scss" scoped>
