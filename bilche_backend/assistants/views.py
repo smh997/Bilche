@@ -23,3 +23,10 @@ class AddNewSiteAPIView(CreateAPIView):
         kwargs.setdefault('context', self.get_serializer_context())
         return serializer_class(*args, **kwargs)
 
+
+class GetSitesAPIView(ListAPIView):
+    queryset = Site.objects.all()
+    serializer_class = SitesListSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
