@@ -57,11 +57,11 @@ class ReportToEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReportToEdit
         fields = '__all__'
-        extra_kwargs = {'base_plant': {'required': False, 'read_only': True}, 'user': {'required': False, 'read_only': True}}
+        extra_kwargs = {'base_plant': {'required': False}, 'user': {'required': False}}
 
 
 class FavoritePlantSerializer(serializers.ModelSerializer):
     class Meta:
         model = FavoritePlant
         fields = '__all__'
-        extra_kwargs = {'base_plant': {'required': False, 'read_only': True}, 'user': {'required': False, 'read_only': True}}
+        extra_kwargs = {'base_plant': {'required': False}, 'user': {'required': False}}
