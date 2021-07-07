@@ -21,7 +21,11 @@ export default {
   css: ['~/assets/scss/global.scss', '~/assets/css/fonts.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/vue-js-modal.client.ts'],
+  plugins: [
+    '~/plugins/vue-js-modal.client.ts',
+    '~/plugins/toast.client.ts',
+    '~/plugins/axios-error-handler.client.ts',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -40,6 +44,10 @@ export default {
     scss: ['./assets/scss/*.scss'],
   },
 
+  env: {
+    API_BASE_URL: 'http://127.0.0.1:8000/',
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -49,6 +57,24 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, { isDev }) {
+      if (!isDev) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(ts|js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: [/(node_modules)/, /api/],
+        })
+      }
+    },
+  },
+
+  /*
+   ** env variables
+   ** See https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
+   */
+  publicRuntimeConfig: {
+    apiBaseURL: 'http://127.0.0.1:8000/',
+  },
 }

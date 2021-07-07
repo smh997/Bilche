@@ -17,7 +17,9 @@
     "nuxt": "^2.15.3",
     "sass": "^1.35.1",
     "vue-js-modal": "^2.0.0-rc.6",
-    "vue-slick-carousel": "^1.0.6"
+    "vue-slick-carousel": "^1.0.6",
+    "vue-toasted": "^1.1.28",
+    "vuex-module-accessor": "^1.0.6"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",
