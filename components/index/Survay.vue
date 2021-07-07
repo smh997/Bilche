@@ -5,22 +5,28 @@
       <div class="title">نظرت رو به ما بگو</div>
       <div class="inputs-row">
         <ig-input
+          v-model="fullName"
           label="نام:"
           placeholder="نام و نام خانوادگی"
           class="input-col6"
         />
         <ig-input
+          v-model="email"
+          required
+          :invalid="!survayEmailValid"
           label="ایمیل:"
           placeholder="example@Bilche.com"
           class="input-col6"
         />
       </div>
-      <ig-input text-area placeholder="محل نوشتن نظر" />
+      <ig-input v-model="comment" text-area placeholder="محل نوشتن نظر" />
       <ig-button
         type="secondary"
         secondary-color="green"
         size="medium"
         class="submit-btn"
+        :loading="loading"
+        @click="submit"
       >
         ثبت نظر</ig-button
       >
@@ -29,14 +35,46 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import { typedMapState } from 'vuex-module-accessor'
 
 // components
 import IgInput from '~/components/IgInput.vue'
 import IgButton from '~/components/IgButton.vue'
 
+// store
+import home, { HomeModule } from '~/store/home'
+
 export default Vue.extend({
   name: 'Survay',
   components: { IgInput, IgButton },
+  data: () => ({
+    fullName: '',
+    email: '',
+    comment: '',
+    loading: false,
+  }),
+  computed: {
+    homeStore(): HomeModule {
+      return home.of(this.$store)
+    },
+    ...typedMapState(home, {
+      survayEmailValid: (state) => state.survayEmailValid,
+    }),
+  },
+  methods: {
+    async submit() {
+      this.loading = true
+      this.homeStore.survayEmailValidation(this.email)
+      if (this.survayEmailValid) {
+        await this.homeStore.submitFeedback({
+          fullName: this.fullName,
+          email: this.email,
+          comment: this.comment,
+        })
+      }
+      this.loading = false
+    },
+  },
 })
 </script>
 <style lang="scss" scoped>
