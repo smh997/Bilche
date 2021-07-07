@@ -42,3 +42,21 @@ class SiteAPIView(APIView):
         serializer = self.serializer_class(instance)
         return Response(serializer.data)
 
+    @swagger_auto_schema(request_body=openapi.Schema(
+                             type=openapi.TYPE_OBJECT,
+                             properties={
+                                 'name': openapi.Schema(type=openapi.TYPE_STRING),
+                                 'type': openapi.Schema(type=openapi.TYPE_STRING),
+                                 'light': openapi.Schema(type=openapi.TYPE_STRING, enum=['d', 'i', 'l', 'a']),
+                                 'temperature': openapi.Schema(type=openapi.TYPE_STRING, enum=['r']),
+                                 'humidity': openapi.Schema(type=openapi.TYPE_STRING, enum=['d', 'n', 'h']),
+                             },))
+    def put(self, request, *args, **kwargs):
+        queryset = Site.objects.all()
+        instance = get_object_or_404(queryset, id=kwargs.get('pk'))
+        for val in request.query_params:
+            request.data[val] = request.query_params[val]
+        serializer = self.serializer_class(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
