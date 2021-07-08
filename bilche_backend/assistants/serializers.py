@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from accounts.models import User
 from assistants.models import Site, Plant, Activity
@@ -80,6 +81,23 @@ class ActivitiesListSerializer(serializers.ModelSerializer):
         model = Activity
         fields = '__all__'
         extra_kwargs = {'plant': {'write_only': True}}
+
+
+class PerformActivitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Activity
+        fields = '__all__'
+        extra_kwargs = {'plant': {'write_only': True, 'required': False}, 'perform_time': {'required': True},
+                        'activity_type': {'required': False}, 'set_time': {'required': False},
+                        'deadline': {'required': False}, 'description': {'required': False}}
+
+    def validate(self, attrs):
+        plant_id = self.initial_data.get('plant_id')
+        if self.instance.plant.id != plant_id:
+            raise ValidationError(detail='این فعالیت مربوط به این گیاه نیست.', code='invalid')
+        if self.instance.perform_time is not None:
+            raise ValidationError(detail='این فعالیت قبلا انجام شده است.', code='invalid')
+        return attrs
 
 
 class PreferredTimeSerializer(serializers.ModelSerializer):
