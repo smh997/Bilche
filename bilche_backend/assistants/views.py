@@ -11,7 +11,7 @@ from rest_framework.viewsets import ViewSet
 from accounts.models import User
 from assistants.models import Site, Plant, Activity
 from assistants.serializers import SiteSerializer, SitesListSerializer, SiteObjectSerializer, PlantSerializer, \
-    PlantObjectSerializer, PreferredTimeSerializer, ActivitiesListSerializer
+    PlantObjectSerializer, PreferredTimeSerializer, ActivitiesListSerializer, PerformActivitySerializer
 
 
 class AddNewSiteAPIView(CreateAPIView):
@@ -111,6 +111,29 @@ class GetActivitiesAPIView(ListAPIView):
     def get_queryset(self):
         self.request.data['plant_id'] = self.kwargs.get('plant_id')
         return self.queryset.filter(plant=self.request.data['plant_id'])
+
+
+class PerformActivityAPIView(APIView):
+    serializer_class = PerformActivitySerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    @swagger_auto_schema(request_body=openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        required=['perform_time', ],
+        properties={
+            'perform_time': openapi.Schema(type=openapi.TYPE_STRING),
+            'description': openapi.Schema(type=openapi.TYPE_STRING),
+        },
+    ))
+    def put(self, request, *args, **kwargs):
+        queryset = Activity.objects.all()
+        instance = get_object_or_404(queryset, id=kwargs.get('activity_id'))
+        request.data['plant_id'] = kwargs.get('plant_id')
+        serializer = self.serializer_class(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
 class PreferredTimeAPIView(APIView):
