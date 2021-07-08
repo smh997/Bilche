@@ -1,6 +1,7 @@
+from datetime import datetime, timedelta
 from rest_framework import serializers
 
-from assistants.models import Site
+from assistants.models import Site, Plant, Activity
 
 
 class SiteSerializer(serializers.ModelSerializer):
@@ -34,3 +35,16 @@ class SiteObjectSerializer(serializers.ModelSerializer):
                 for plant in site.plants.all()]
 
 
+class PlantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plant
+        exclude = ('is_alive', )
+        extra_kwargs = {'site': {'required': False}}
+
+    def create(self, validated_data):
+        plant = Plant.objects.create(**validated_data)
+        now = datetime.now()
+        deadline = now + timedelta(days=plant.base_plant.waterings.first().range)
+        activity = Activity.objects.create(plant=plant, activity_type='w', set_time=now, deadline=deadline,
+                                           description='اولین آبیاری:)')
+        return plant
