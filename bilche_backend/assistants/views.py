@@ -92,3 +92,10 @@ class PlantAPIView(APIView):
         serializer = self.serializer_class(instance)
         return Response(serializer.data)
 
+    def delete(self, request, *args, **kwargs):
+        queryset = Plant.objects.all()
+        instance = get_object_or_404(queryset, id=kwargs.get('plant_id'))
+        instance.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
