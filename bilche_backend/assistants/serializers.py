@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from rest_framework import serializers
 
+from accounts.models import User
 from assistants.models import Site, Plant, Activity
 
 
@@ -71,3 +72,11 @@ class PlantObjectSerializer(serializers.ModelSerializer):
         result = {'id': next_activity.id, 'activity_type': next_activity.activity_type, 'set_time': next_activity.set_time,
                   'deadline': next_activity.deadline, 'description': next_activity.description}
         return result
+
+
+class PreferredTimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('preferred_hour', )
+        extra_kwargs = {'preferred_hour': {'required': True}}
+
