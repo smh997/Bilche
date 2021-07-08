@@ -38,11 +38,33 @@ class BasePlantObjectSerializer(serializers.ModelSerializer):
     def get_pictures(self, base_plant)->list:
         return [image.picture.url for image in base_plant.pictures.all()]
 
-    def get_waterings(self, base_plant)->list:
-        return [watering for watering in base_plant.waterings.values_list('season', 'range')]
+    def get_waterings(self, base_plant)->str:
+        waterings = [watering for watering in base_plant.waterings.values_list('season', 'range')]
+        w = []
+        seasons = {
+            'sp': 'بهار',
+            'su': 'تابستان',
+            'f': 'پاییز',
+            'w': 'زمستان'
+        }
+        for watering in waterings:
+            w.append('در ' + seasons[watering[0]] + ' ' + str(watering[1]) + ' روز یکبار')
+        result = '، '.join(w)
+        return result
 
-    def get_fertilizers(self, base_plant)->list:
-        return [fertilizer for fertilizer in base_plant.fertilizers.values_list('base_fertilizer__name', 'season', 'range')]
+    def get_fertilizers(self, base_plant)->str:
+        fertilizers = [fertilizer for fertilizer in base_plant.fertilizers.values_list('base_fertilizer__name', 'season', 'range')]
+        f = []
+        seasons = {
+            'sp': 'بهار',
+            'su': 'تابستان',
+            'f': 'پاییز',
+            'w': 'زمستان'
+        }
+        for fertilizer in fertilizers:
+            f.append(fertilizer[0] + ' در ' + seasons[fertilizer[1]] + ' ' + str(fertilizer[2]) + ' روز یکبار')
+        result = '، '.join(f)
+        return result
 
     def get_colors(self, base_plant)->list:
         return [color for color in base_plant.flower_colors.values_list('flower_color__color_code', 'flower_color__color_name')]
