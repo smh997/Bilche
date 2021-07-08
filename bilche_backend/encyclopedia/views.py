@@ -43,7 +43,7 @@ class SearchAPIView(ListAPIView):
         return queryset
 
     category = openapi.Parameter('category', in_=openapi.IN_QUERY, type=openapi.TYPE_ARRAY,
-                                 items=openapi.Items(type=openapi.TYPE_INTEGER))
+                                 items=openapi.Items(type=openapi.TYPE_NUMBER))
     level = openapi.Parameter('level', in_=openapi.IN_QUERY, type=openapi.TYPE_ARRAY,
                               items=openapi.Items(type=openapi.TYPE_STRING))
     light = openapi.Parameter('light', in_=openapi.IN_QUERY, type=openapi.TYPE_ARRAY,

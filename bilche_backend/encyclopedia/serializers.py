@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from rest_framework import serializers
 
 from encyclopedia.models import BasePlant, ReportToEdit, FavoritePlant
@@ -49,7 +50,7 @@ class BasePlantObjectSerializer(serializers.ModelSerializer):
     def get_like(self, base_plant)->bool:
         request = self.context.get("request")
         if request and hasattr(request, "user"):
-            return True if FavoritePlant.objects.filter(user=request.user, base_plant=base_plant).exists() else False
+            return True if FavoritePlant.objects.filter(user=request.user.id, base_plant=base_plant).exists() else False
         return False
 
 
