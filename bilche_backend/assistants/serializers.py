@@ -17,7 +17,8 @@ class SitesListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Site
-        exclude = ('user',)
+        fields = '__all__'
+        extra_kwargs = {'user': {'write_only': True}}
 
     def get_plants_pictures(self, site)->list:
         return [plant.base_plant.pictures.first().picture.url for plant in site.plants.all()]
@@ -72,6 +73,13 @@ class PlantObjectSerializer(serializers.ModelSerializer):
         result = {'id': next_activity.id, 'activity_type': next_activity.activity_type, 'set_time': next_activity.set_time,
                   'deadline': next_activity.deadline, 'description': next_activity.description}
         return result
+
+
+class ActivitiesListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Activity
+        fields = '__all__'
+        extra_kwargs = {'plant': {'write_only': True}}
 
 
 class PreferredTimeSerializer(serializers.ModelSerializer):
