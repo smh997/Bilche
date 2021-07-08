@@ -104,6 +104,17 @@ class PlantAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class GetActivitiesAPIView(ListAPIView):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitiesListSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        self.request.data['plant_id'] = self.kwargs.get('plant_id')
+        return self.queryset.filter(plant=self.request.data['plant_id'])
+
+
 class PreferredTimeAPIView(APIView):
     serializer_class = PreferredTimeSerializer
     authentication_classes = (TokenAuthentication,)
