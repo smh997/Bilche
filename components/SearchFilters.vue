@@ -81,6 +81,7 @@ export default Vue.extend({
     toxic: {
       set(value: boolean) {
         this.searchStore.toxic = value
+        this.searchStore.searchPlants()
       },
       get(): boolean | undefined {
         return this.searchStore.state.toxic
@@ -89,6 +90,7 @@ export default Vue.extend({
     irritant: {
       set(value: boolean) {
         this.searchStore.irritant = value
+        this.searchStore.searchPlants()
       },
       get(): boolean | undefined {
         return this.searchStore.state.irritant
@@ -97,6 +99,7 @@ export default Vue.extend({
     lifeSpan: {
       set(value: number | undefined) {
         this.searchStore.lifeSpan = value
+        this.searchStore.searchPlants()
       },
       get(): number | undefined {
         return this.searchStore.state.lifeSpan
@@ -105,6 +108,7 @@ export default Vue.extend({
     pruning: {
       set(value: boolean) {
         this.searchStore.pruning = value
+        this.searchStore.searchPlants()
       },
       get(): boolean | undefined {
         return this.searchStore.state.pruning
@@ -113,6 +117,7 @@ export default Vue.extend({
     fogging: {
       set(value: boolean) {
         this.searchStore.fogging = value
+        this.searchStore.searchPlants()
       },
       get(): boolean | undefined {
         return this.searchStore.state.fogging
@@ -121,6 +126,7 @@ export default Vue.extend({
     cleaningPot: {
       set(value: boolean) {
         this.searchStore.cleaningPot = value
+        this.searchStore.searchPlants()
       },
       get(): boolean | undefined {
         return this.searchStore.state.cleaningPot
@@ -129,6 +135,7 @@ export default Vue.extend({
     cleaningLeaves: {
       set(value: boolean) {
         this.searchStore.cleaningLeaves = value
+        this.searchStore.searchPlants()
       },
       get(): boolean | undefined {
         return this.searchStore.state.cleaningLeaves

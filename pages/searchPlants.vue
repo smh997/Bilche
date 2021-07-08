@@ -18,6 +18,7 @@
           <plant-card
             v-for="plant in plants"
             :key="plant.id"
+            :plant-id="plant.id"
             :plant-image="plant.picture"
             :plant-name="plant.title"
           />

@@ -200,7 +200,7 @@ export default Vue.extend({
       }
     }
     &.orange {
-      background: $palette-primary;
+      background: #ff740d;
       &:hover {
         background: #f26e0c;
       }

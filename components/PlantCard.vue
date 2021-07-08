@@ -1,14 +1,18 @@
 <template>
-  <div class="card">
+  <a :href="`http://localhost:3000/plant/${plantId}`" class="plant-card">
     <img class="card-image" :src="plantImage" />
     <div class="card-title">{{ plantName }}</div>
-  </div>
+  </a>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
   name: 'PlantCard',
   props: {
+    plantId: {
+      type: Number,
+      default: 0,
+    },
     plantName: {
       type: String,
       default: '',
@@ -21,7 +25,7 @@ export default Vue.extend({
 })
 </script>
 <style lang="scss" scoped>
-.card {
+.plant-card {
   display: flex;
   flex-direction: column;
   align-items: center;
