@@ -48,3 +48,26 @@ class PlantSerializer(serializers.ModelSerializer):
         activity = Activity.objects.create(plant=plant, activity_type='w', set_time=now, deadline=deadline,
                                            description='اولین آبیاری:)')
         return plant
+
+
+class PlantObjectSerializer(serializers.ModelSerializer):
+    activities = serializers.SerializerMethodField()
+    next_activity = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Plant
+        exclude = ('site',)
+
+    def get_activities(self, plant)->list:
+        activities = plant.activities.exclude(perform_time=None).order_by('-perform_time')
+        recent_activities = activities[0:(min(len(activities), 3))]
+        result = [{'id': activity.id, 'activity_type': activity.activity_type, 'set_time': activity.set_time,
+                 'perform_time': activity.perform_time, 'deadline': activity.deadline,
+                 'description': activity.description} for activity in recent_activities]
+        return result
+
+    def get_next_activity(self, plant)->dict:
+        next_activity = plant.activities.filter(perform_time=None).last()
+        result = {'id': next_activity.id, 'activity_type': next_activity.activity_type, 'set_time': next_activity.set_time,
+                  'deadline': next_activity.deadline, 'description': next_activity.description}
+        return result
