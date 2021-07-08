@@ -40,7 +40,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         # fields = '__all__'
-        fields = ('username', 'password', 'email', 'level', 'fullname', 'phone_number', 'profile_photo', 'is_gardener', 'prefered_hour', '_prefered_days')
+        fields = ('username', 'password', 'email', 'level', 'fullname', 'phone_number', 'profile_photo', 'is_gardener', 'preferred_hour', '_preferred_days')
         extra_kwargs = {'password': {'write_only': True}, 'email': {'write_only': True}, 'username': {'required': False}}
         # read_only_fields = ()
 

@@ -39,7 +39,7 @@ class User(AbstractUser):
         'unique': 'کاربری با این ایمیل وجود دارد.'
     })
     is_gardener = models.BooleanField(default=False)
-    preferred_hour = models.DateTimeField(blank=True, null=True)
+    preferred_hour = models.TimeField(blank=True, null=True)
     _preferred_days = models.CharField(max_length=7, default='-------')
 
     @property
