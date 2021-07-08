@@ -8,8 +8,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 
-from assistants.models import Site
-from assistants.serializers import SiteSerializer, SitesListSerializer, SiteObjectSerializer, PlantSerializer
+from assistants.models import Site, Plant
+from assistants.serializers import SiteSerializer, SitesListSerializer, SiteObjectSerializer, PlantSerializer, \
+    PlantObjectSerializer
 
 
 class AddNewSiteAPIView(CreateAPIView):
@@ -78,3 +79,16 @@ class AddNewPlantAPIView(CreateAPIView):
         serializer_class = self.get_serializer_class()
         kwargs.setdefault('context', self.get_serializer_context())
         return serializer_class(*args, **kwargs)
+
+
+class PlantAPIView(APIView):
+    serializer_class = PlantObjectSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, *args, **kwargs):
+        queryset = Plant.objects.all()
+        instance = get_object_or_404(queryset, id=kwargs.get('plant_id'))
+        serializer = self.serializer_class(instance)
+        return Response(serializer.data)
+
