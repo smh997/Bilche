@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 
 from assistants.models import Site
-from assistants.serializers import SiteSerializer, SitesListSerializer, SiteObjectSerializer
+from assistants.serializers import SiteSerializer, SitesListSerializer, SiteObjectSerializer, PlantSerializer
 
 
 class AddNewSiteAPIView(CreateAPIView):
@@ -38,7 +38,7 @@ class SiteAPIView(APIView):
 
     def get(self, request, *args, **kwargs):
         queryset = Site.objects.all()
-        instance = get_object_or_404(queryset, id=kwargs.get('pk'))
+        instance = get_object_or_404(queryset, id=kwargs.get('site_id'))
         serializer = self.serializer_class(instance)
         return Response(serializer.data)
 
@@ -53,7 +53,7 @@ class SiteAPIView(APIView):
                              },))
     def put(self, request, *args, **kwargs):
         queryset = Site.objects.all()
-        instance = get_object_or_404(queryset, id=kwargs.get('pk'))
+        instance = get_object_or_404(queryset, id=kwargs.get('site_id'))
         for val in request.query_params:
             request.data[val] = request.query_params[val]
         serializer = self.serializer_class(instance, data=request.data, partial=True)
@@ -63,6 +63,18 @@ class SiteAPIView(APIView):
 
     def delete(self, request, *args, **kwargs):
         queryset = Site.objects.all()
-        instance = get_object_or_404(queryset, id=kwargs.get('pk'))
+        instance = get_object_or_404(queryset, id=kwargs.get('site_id'))
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class AddNewPlantAPIView(CreateAPIView):
+    serializer_class = PlantSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get_serializer(self, *args, **kwargs):
+        self.request.data['site'] = self.kwargs.get('site_id')
+        serializer_class = self.get_serializer_class()
+        kwargs.setdefault('context', self.get_serializer_context())
+        return serializer_class(*args, **kwargs)
