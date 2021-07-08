@@ -8,9 +8,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 
+from accounts.models import User
 from assistants.models import Site, Plant
 from assistants.serializers import SiteSerializer, SitesListSerializer, SiteObjectSerializer, PlantSerializer, \
-    PlantObjectSerializer
+    PlantObjectSerializer, PreferredTimeSerializer
 
 
 class AddNewSiteAPIView(CreateAPIView):
@@ -55,6 +56,7 @@ class SiteAPIView(APIView):
     def put(self, request, *args, **kwargs):
         queryset = Site.objects.all()
         instance = get_object_or_404(queryset, id=kwargs.get('site_id'))
+        print(request.data)
         for val in request.query_params:
             request.data[val] = request.query_params[val]
         serializer = self.serializer_class(instance, data=request.data, partial=True)
@@ -99,3 +101,19 @@ class PlantAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class PreferredTimeAPIView(APIView):
+    serializer_class = PreferredTimeSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    @swagger_auto_schema(request_body=openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        required=['preferred_hour', ],
+        properties={
+            'preferred_hour': openapi.Schema(type=openapi.TYPE_STRING),
+        }, ))
+    def put(self, request, *args, **kwargs):
+        serializer = self.serializer_class(request.user, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
