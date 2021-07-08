@@ -2,12 +2,12 @@ import re
 
 from rest_framework import serializers
 
-from home_page.models import Bilche_feedback, Bilche_subscribe, Bilche_install_app
+from home_page.models import BilcheFeedback, BilcheSubscribe, BilcheInstallapp
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Bilche_feedback
+        model = BilcheFeedback
         fields = ('fullname', 'email', 'text')
 
 
@@ -20,16 +20,20 @@ class SubscribeSerializer(serializers.Serializer):
             if '@' not in data['email_phone']:
                 raise Exception('لطفا شماره تلفن همراه یا یک ایمیل معتبر وارد نمایید.'
                                 'شماره تلفن همراه باید با 09 شروع شود و تنها شامل 11 رقم باشد.')
+            elif BilcheSubscribe.objects.filter(email=data['email_phone']).exists():
+                raise Exception('کاربری با این ایمیل قبلا در خبرنامه بیلچه ثبت نام شده است.')
         except Exception as e:
             pattern = re.compile("^09\d{9}$")
             if pattern.match(data['email_phone']) is None:
                 raise serializers.ValidationError(e)
+            elif BilcheSubscribe.objects.filter(phone_number=data['email_phone']).exists():
+                raise Exception('کاربری با این شماره تلفن قبلا در خبرنامه بیلچه ثبت نام شده است.')
         return data
 
     def create(self, validated_data):
         if '@' in validated_data['email_phone']:
-            return Bilche_subscribe.objects.create(email=validated_data['email_phone'])
-        return Bilche_subscribe.objects.create(phone_number=validated_data['email_phone'])
+            return BilcheSubscribe.objects.create(email=validated_data['email_phone'])
+        return BilcheSubscribe.objects.create(phone_number=validated_data['email_phone'])
 
     def update(self, instance, validated_data):
         pass
@@ -37,5 +41,5 @@ class SubscribeSerializer(serializers.Serializer):
 
 class InstallappSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Bilche_install_app
+        model = BilcheInstallapp
         fields = '__all__'

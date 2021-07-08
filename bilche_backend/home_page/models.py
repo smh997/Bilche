@@ -4,18 +4,18 @@ from phone_field import PhoneField
 from accounts.models import User
 
 
-class Bilche_feedback(models.Model):
+class BilcheFeedback(models.Model):
     fullname = models.CharField(max_length=100, blank=True, default='')
-    email = models.EmailField(null=True)
+    email = models.EmailField()
     text = models.TextField()
 
 
-class Bilche_subscribe(models.Model):
+class BilcheSubscribe(models.Model):
     email = models.EmailField(null=True)
     phone_number = PhoneField(null=True)
 
 
-class Bilche_install_app(models.Model):
+class BilcheInstallapp(models.Model):
     application_store_choices = (
         ('sa', 'Sib app'),
         ('s', 'Sibche'),
