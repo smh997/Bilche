@@ -9,9 +9,9 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 
 from accounts.models import User
-from assistants.models import Site, Plant
+from assistants.models import Site, Plant, Activity
 from assistants.serializers import SiteSerializer, SitesListSerializer, SiteObjectSerializer, PlantSerializer, \
-    PlantObjectSerializer, PreferredTimeSerializer
+    PlantObjectSerializer, PreferredTimeSerializer, ActivitiesListSerializer
 
 
 class AddNewSiteAPIView(CreateAPIView):
@@ -31,6 +31,9 @@ class GetSitesAPIView(ListAPIView):
     serializer_class = SitesListSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
 
 class SiteAPIView(APIView):
