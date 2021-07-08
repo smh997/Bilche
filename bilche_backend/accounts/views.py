@@ -65,7 +65,7 @@ class ResetPasswordAPIView(ResetPasswordRequestToken):
             error = e.detail['email'][0]
             translator = {'We couldn\'t find an account associated with that email. Please try a different e-mail address.': 'حسابی با این آدرس ایمیل یافت نشد.',
                           'Enter a valid email address.': 'ایمیل نامعتبر است.'}
-            return Response({'error': translator[error]})
+            return Response({'error': translator[error]}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ResetPasswordConfirmAPIView(ResetPasswordConfirm):
