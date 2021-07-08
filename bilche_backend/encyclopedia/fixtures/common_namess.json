@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "base_plant": 1,
-      "name": "پلارگونیوم Pelargonium"
+      "name": "پلارگونیوم (به انگلیسی: Pelargonium)"
     }
   },
   {
@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
       "base_plant": 1,
-      "name": "شمعدانی Shamdaani"
+      "name": "شمعدانی (به انگلیسی: Shamdaani)"
     }
   },
   {
@@ -20,7 +20,7 @@
     "pk": 3,
     "fields": {
       "base_plant": 2,
-      "name": "زامیفولیا zamiifolia"
+      "name": "زامیفولیا (به انگلیسی: zamiifolia)"
     }
   },
   {
@@ -28,7 +28,7 @@
     "pk": 4,
     "fields": {
       "base_plant": 2,
-      "name": "زاموفیلیا zamofilia"
+      "name": "زاموفیلیا (به انگلیسی: zamofilia)"
     }
   },
   {
@@ -36,7 +36,7 @@
     "pk": 5,
     "fields": {
       "base_plant": 2,
-      "name": "گیاه زی زی zz-plant"
+      "name": "گیاه زی زی (به انگلیسی: zz-plant)"
     }
   },
   {
@@ -44,7 +44,7 @@
     "pk": 6,
     "fields": {
       "base_plant": 2,
-      "name": "نخل زمرد Nakhl Zomorod"
+      "name": "نخل زمرد (به انگلیسی: Nakhl Zomorod)"
     }
   },
   {
@@ -52,7 +52,7 @@
     "pk": 7,
     "fields": {
       "base_plant": 2,
-      "name": "زوزو Zuzu"
+      "name": "زوزو (به انگلیسی: Zuzu)"
     }
   },
   {
@@ -60,7 +60,7 @@
     "pk": 8,
     "fields": {
       "base_plant": 3,
-      "name": "سانسوریا Sansevieria"
+      "name": "سانسوریا (به انگلیسی: Sansevieria)"
     }
   },
   {
@@ -68,7 +68,7 @@
     "pk": 9,
     "fields": {
       "base_plant": 3,
-      "name": "زبان مادرشوهر mother-in-law's tongue"
+      "name": "زبان مادرشوهر (به انگلیسی: mother-in-law's tongue)"
     }
   },
   {
@@ -76,7 +76,7 @@
     "pk": 10,
     "fields": {
       "base_plant": 3,
-      "name": "زبان شیطان devil's tongue"
+      "name": "زبان شیطان (به انگلیسی: devil's tongue)"
     }
   },
   {
@@ -84,7 +84,7 @@
     "pk": 11,
     "fields": {
       "base_plant": 3,
-      "name": "زبان مار snake tongue"
+      "name": "زبان مار (به انگلیسی: snake tongue)"
     }
   },
   {
@@ -92,7 +92,7 @@
     "pk": 12,
     "fields": {
       "base_plant": 3,
-      "name": "زبان جن jinn's tongue"
+      "name": "زبان جن (به انگلیسی: jinn's tongue)"
     }
   },
   {
@@ -108,7 +108,7 @@
     "pk": 14,
     "fields": {
       "base_plant": 4,
-      "name": "دیفن باخیا Dieffenbachia"
+      "name": "دیفن باخیا (به انگلیسی: Dieffenbachia)"
     }
   },
   {
@@ -116,7 +116,7 @@
     "pk": 15,
     "fields": {
       "base_plant": 4,
-      "name": "سم برگ Dumb Cane"
+      "name": "سم برگ (به انگلیسی: Dumb Cane)"
     }
   },
   {
@@ -124,7 +124,7 @@
     "pk": 16,
     "fields": {
       "base_plant": 5,
-      "name": "اشک تمساح alligator plant"
+      "name": "اشک تمساح (به انگلیسی: alligator plant)"
     }
   },
   {
@@ -132,7 +132,7 @@
     "pk": 17,
     "fields": {
       "base_plant": 5,
-      "name": "بریوفیلوم  Bryophyllum daigremontianum"
+      "name": "بریوفیلوم (به انگلیسی: Bryophyllum daigremontianum)"
     }
   },
   {
@@ -140,7 +140,7 @@
     "pk": 18,
     "fields": {
       "base_plant": 5,
-      "name": "مادر هزار فرزند mother of thousands"
+      "name": "مادر هزار فرزند (به انگلیسی: mother of thousands)"
     }
   },
   {
@@ -148,7 +148,7 @@
     "pk": 19,
     "fields": {
       "base_plant": 5,
-      "name": "اشک اژدها dragon plant"
+      "name": "اشک اژدها (به انگلیسی: dragon plant)"
     }
   },
   {
@@ -156,7 +156,7 @@
     "pk": 20,
     "fields": {
       "base_plant": 5,
-      "name": "کالانکوآ (کالانکوئه) Kalanchoe"
+      "name": "کالانکوآ یا کالانکوئه (به انگلیسی: Kalanchoe)"
     }
   },
   {
@@ -164,7 +164,7 @@
     "pk": 21,
     "fields": {
       "base_plant": 5,
-      "name": "کلاه مکزیکی Mexican hat"
+      "name": "کلاه مکزیکی (به انگلیسی: Mexican hat)"
     }
   },
   {
@@ -204,7 +204,7 @@
     "pk": 26,
     "fields": {
       "base_plant": 6,
-      "name": "حسن یوسف Hossne Yousof"
+      "name": "حسن یوسف (به انگلیسی: Hossne Yousof)"
     }
   }
 ]

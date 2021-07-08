@@ -5,7 +5,7 @@
     "fields": {
       "title": "شمعدانی",
       "scientific_name": "Pelargonium",
-      "family": "Geraniaceae",
+      "family": "گرانیاسه (به انگلیسی: Geraniaceae)",
       "level": "e",
       "need_to_check": "1w",
       "fogging": false,
@@ -35,7 +35,7 @@
     "fields": {
       "title": "زامیفولیا",
       "scientific_name": "Zamioculcas zamiifolia",
-      "family": "آراسه (شیپوریان)",
+      "family": "آراسه یا شیپوریان (به انگلیسی: Araceae)",
       "level": "e",
       "need_to_check": "1w",
       "fogging": false,
@@ -65,7 +65,7 @@
     "fields": {
       "title": "سانسوریا",
       "scientific_name": "Sansevieria trifasciata",
-      "family": "سوسنیان یا لیلیاسه Asparagaceae",
+      "family": "سوسنیان یا لیلیاسه (به انگلیسی: Asparagaceae)",
       "level": "e",
       "need_to_check": "1w",
       "fogging": false,
@@ -95,7 +95,7 @@
     "fields": {
       "title": "دیفن باخیا",
       "scientific_name": "Dieffenbachia Seguine",
-      "family": "آراسه (شیپوریان)",
+      "family": "آراسه یا شیپوریان (به انگلیسی: Araceae)",
       "level": "e",
       "need_to_check": "2w",
       "fogging": true,
@@ -125,7 +125,7 @@
     "fields": {
       "title": "اشک",
       "scientific_name": "kalanchoe daigremontiana",
-      "family": "کراسولاسه (گل‌نازیان) Crassulaceae",
+      "family": "کراسولاسه یا گل‌نازیان (به انگلیسی: Crassulaceae)",
       "level": "m",
       "need_to_check": "1w",
       "fogging": false,
@@ -155,7 +155,7 @@
     "fields": {
       "title": "حسن یوسف",
       "scientific_name": "coleus blumei",
-      "family": "نعناییان یا لامیاسه Lamiaceae",
+      "family": "نعناییان یا لامیاسه (به انگلیسی: Lamiaceae)",
       "level": "h",
       "need_to_check": "aw",
       "fogging": true,

@@ -5,13 +5,13 @@ from accounts.models import User
 
 
 class BasePlant(models.Model):
-    title = models.CharField(max_length=50, unique=True, error_messages={
+    title = models.CharField(max_length=100, unique=True, error_messages={
         'unique': 'این عنوان متعلق به گیاه دیگری است.'
     })
     scientific_name = models.CharField(max_length=50, unique=True, error_messages={
         'unique': 'این نام علمی متعلق به گیاه دیگری است.'
     })
-    family = models.CharField(max_length=50)
+    family = models.CharField(max_length=100)
     level_choices = (
         ('e', 'آسان'),
         ('m', 'متوسط'),
@@ -71,12 +71,12 @@ class BasePlant(models.Model):
 
 class CommonName(models.Model):
     base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='common_names')
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     pronunciation = models.FileField(null=True, upload_to='pronunciation')
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50, unique=True, error_messages={
+    name = models.CharField(max_length=100, unique=True, error_messages={
         'unique': 'این نام متعلق به دسته دیگری از گیاهان است.'
     })
     picture = models.ImageField(null=True, upload_to='plant_pictures')
@@ -118,7 +118,7 @@ class PlantWatering(models.Model):
 
 
 class BaseFertilizer(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     description = models.TextField()
 
 
@@ -137,7 +137,7 @@ class PlantFertilizer(models.Model):
 
 class Image(models.Model):
     base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='pictures')
-    alternative_text = models.CharField(max_length=50)
+    alternative_text = models.CharField(max_length=100)
     picture = models.ImageField(upload_to='plant_pictures')
 
     def get_str_picture(self):
