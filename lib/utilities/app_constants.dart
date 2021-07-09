@@ -25,6 +25,8 @@ const menuItemHeight = d48;
 const buttonHeight = d48;
 const inputHeight = d48;
 const appBarHeight = d56;
+const smallCardImageHeight = d56;
+const bigCardImageHeight = 140.0;
 
 //Shadows
 const cardShadow = const BoxShadow(
