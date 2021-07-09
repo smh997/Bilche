@@ -12,6 +12,8 @@ class BTextField extends StatelessWidget {
       this.errorText,
       this.controller,
       this.textInputAction = TextInputAction.done,
+      this.textInputType = TextInputType.text,
+      this.textDirection = TextDirection.rtl,
       this.filled = false,
       this.isPassword = false,
       this.enabled = true,
@@ -21,9 +23,12 @@ class BTextField extends StatelessWidget {
       this.counterText,
       this.validator,
       required this.onChanged,
+      this.onFieldSubmitted,
+      this.onEditingComplete,
       this.onTap,
       this.minLines,
-      this.maxLines})
+      this.maxLines = 1,
+      this.maxLength})
       : super(key: key);
 
   final String? label;
@@ -36,13 +41,18 @@ class BTextField extends StatelessWidget {
   final bool enabled;
   final bool filled;
   final bool isPassword;
-  final String? Function(String?)? validator;
+  final String? Function(String? value)? validator;
   final Function(String value) onChanged;
+  final Function(String value)? onFieldSubmitted;
+  final VoidCallback? onEditingComplete;
   final VoidCallback? onTap;
   final TextEditingController? controller;
+  final TextDirection? textDirection;
   final TextInputAction textInputAction;
+  final TextInputType textInputType;
   final int? minLines;
-  final int? maxLines;
+  final int maxLines;
+  final int? maxLength;
 
   static final border =
       OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(d8)));
@@ -52,6 +62,7 @@ class BTextField extends StatelessWidget {
         // labelStyle: BTypography.bodyText2,
         suffixText: suffix,
         prefixText: prefix,
+        counterText: '',
         counterStyle: BTypography.overline,
         border: border.copyWith(
             borderSide: BorderSide(color: PrimaryColor.main, width: 1)),
@@ -62,49 +73,49 @@ class BTextField extends StatelessWidget {
         filled: true,
         errorText: errorText,
       );
-  TextDirection? get textDirection => TextDirection.rtl;
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            child: TextFormField(
-              style: BTypography.bodyText2,
-              obscureText: isPassword,
-              textInputAction: textInputAction,
-              decoration: decoration,
-              textDirection: textDirection,
-              onTap: onTap,
-              onChanged: onChanged,
-              controller: controller,
-              minLines: minLines,
-              maxLines: maxLines,
-              enabled: enabled,
-              validator: validator,
-            ),
-            decoration: BoxDecoration(boxShadow: [inputShadow]),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          // height: inputHeight,
+          child: TextFormField(
+            style: BTypography.bodyText2,
+            obscureText: isPassword,
+            textInputAction: textInputAction,
+            keyboardType: textInputType,
+            decoration: decoration,
+            textDirection: textDirection,
+            onTap: onTap,
+            onChanged: onChanged,
+            onFieldSubmitted: onFieldSubmitted,
+            onEditingComplete: onEditingComplete,
+            controller: controller,
+            maxLength: maxLength,
+            minLines: minLines,
+            maxLines: maxLines,
+            enabled: enabled,
+            validator: validator,
           ),
-          SizedBox(height: d4),
-          if (helperText != null || counterText != null)
-            Padding(
-              padding: const EdgeInsets.all(d4),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(helperText ?? '', style: BTypography.overline),
-                  SizedBox(width: normalSpacing),
-                  Text(counterText ?? '',
-                      style:
-                          BTypography.overline.copyWith(color: GrayColor.g10)),
-                ],
-              ),
+          decoration: BoxDecoration(boxShadow: [/*inputShadow*/]),
+        ),
+        SizedBox(height: d4),
+        if (helperText != null || counterText != null)
+          Padding(
+            padding: const EdgeInsets.all(d4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(helperText ?? '', style: BTypography.overline),
+                SizedBox(width: normalSpacing),
+                Text(counterText ?? '',
+                    style: BTypography.overline.copyWith(color: GrayColor.g10)),
+              ],
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }

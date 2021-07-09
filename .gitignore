@@ -33,6 +33,7 @@
 
 # Web related
 lib/generated_plugin_registrant.dart
+lib/services/open_api_generator.dart
 openapi-spec.yaml
 
 # Symbolication related
