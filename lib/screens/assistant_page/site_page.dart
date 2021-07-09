@@ -1,17 +1,15 @@
-import 'package:bilche/screens/assistant_page/site_page.dart';
 import 'package:bilche/utilities/app_constants.dart';
 import 'package:bilche/utilities/themes/text_styles.dart';
 import 'package:bilche/widgets/app_bar.dart';
 import 'package:bilche/widgets/bottom_sheet.dart';
+import 'package:bilche/widgets/custom_widgets/plant_card.dart';
 import 'package:bilche/widgets/menu_item.dart';
-import 'package:bilche/widgets/notification.dart';
+import 'package:bilche/widgets/table.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'local_widgets/site_card.dart';
-
-class AssistantPage extends StatelessWidget {
-  const AssistantPage({Key? key}) : super(key: key);
+class SitePage extends StatelessWidget {
+  const SitePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +17,10 @@ class AssistantPage extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: BAppBar(
-          title: InkWell(
-              child: Padding(
-                  padding: buttonPadding,
-                  child: Icon(Icons.notification_important_outlined)),
-              onTap: () {}),
+          title: Text(
+            'گلخانه فلان',
+            style: BTypography.headline3,
+          ),
           actions: [
             InkWell(
                 child: Padding(
@@ -64,26 +61,24 @@ class AssistantPage extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.start,
             runSpacing: extraSpacing,
             children: [
-              Text('پیام جدید', style: BTypography.subtitle1),
-              BNotificationCard(
-                notificationType: NotificationType.Warning,
-                title: 'تیتر پیام جدید',
-                dateTime: DateTime.now().subtract(Duration(hours: 5)),
-                message:
-                    'این متن پیامی است که به شما ارسال شده است تا از محتوای آن آگاه شوید. کافی است برای رفع آن، اقدام به رسیدگی کنید.',
-                onButtonTap: () {},
-              ),
-              Text('گلخانه‌ها', style: BTypography.subtitle1),
-              SiteCard(
-                title: 'گلخانه فلان',
-                lightFactor: 'کم‌نور',
-                tempFactor: 'استاندارد',
-                humidityFactor: 'مرطوب',
-                placeType: 'حمام و سرویس بهداشتی',
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SitePage(),
-                )),
-              ),
+              Text('گیاهان', style: BTypography.subtitle1),
+              BTable(
+                crossAxisCount: 2,
+                children: [
+                  PlantCard(
+                    title: 'گلخانه فلان',
+                    image: AssetImage('assets/images/images.jpg'),
+                  ),
+                  PlantCard(
+                    title: 'گلخانه فلان',
+                    image: AssetImage('assets/images/images.jpg'),
+                  ),
+                  PlantCard(
+                    title: 'گلخانه فلان',
+                    image: AssetImage('assets/images/images.jpg'),
+                  ),
+                ],
+              )
             ],
           ),
         ),

@@ -1,4 +1,3 @@
-import 'package:bilche/screens/assistant_page/site_page.dart';
 import 'package:bilche/utilities/app_constants.dart';
 import 'package:bilche/utilities/themes/text_styles.dart';
 import 'package:bilche/widgets/app_bar.dart';
@@ -10,8 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'local_widgets/site_card.dart';
 
-class AssistantPage extends StatelessWidget {
-  const AssistantPage({Key? key}) : super(key: key);
+class SitePlantPage extends StatelessWidget {
+  const SitePlantPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +29,7 @@ class AssistantPage extends StatelessWidget {
                     padding: buttonPadding,
                     child: Icon(Icons.notification_important_outlined)),
                 onTap: () {}),
+            SizedBox(width: normalSpacing),
             InkWell(
                 child: Padding(
                     padding: buttonPadding,
@@ -60,11 +60,11 @@ class AssistantPage extends StatelessWidget {
         ),
         body: Padding(
           padding: scaffoldPadding,
-          child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.start,
-            runSpacing: extraSpacing,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('پیام جدید', style: BTypography.subtitle1),
+              SizedBox(height: extraSpacing),
               BNotificationCard(
                 notificationType: NotificationType.Warning,
                 title: 'تیتر پیام جدید',
@@ -73,16 +73,15 @@ class AssistantPage extends StatelessWidget {
                     'این متن پیامی است که به شما ارسال شده است تا از محتوای آن آگاه شوید. کافی است برای رفع آن، اقدام به رسیدگی کنید.',
                 onButtonTap: () {},
               ),
+              SizedBox(height: extraSpacing),
               Text('گلخانه‌ها', style: BTypography.subtitle1),
+              SizedBox(height: extraSpacing),
               SiteCard(
                 title: 'گلخانه فلان',
                 lightFactor: 'کم‌نور',
                 tempFactor: 'استاندارد',
                 humidityFactor: 'مرطوب',
                 placeType: 'حمام و سرویس بهداشتی',
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SitePage(),
-                )),
               ),
             ],
           ),
