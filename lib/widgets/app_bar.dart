@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 class BAppBar extends AppBar {
   BAppBar({required this.title, this.centerTitle, List<Widget>? actions})
       : super(actions: [
-          Padding(padding: regularPadding, child: Row(children: actions ?? []))
+          Padding(
+              padding: regularPadding,
+              child: Wrap(
+                  direction: Axis.horizontal,
+                  spacing: normalSpacing,
+                  children: actions ?? []))
         ]);
   final Widget? title;
   final bool? centerTitle;
@@ -18,9 +23,12 @@ class BAppBar extends AppBar {
   TextTheme? get textTheme => BTypography.textTheme;
   double? get toolbarHeight => appBarHeight;
   Color? get shadowColor => Colors.transparent;
-  double? get titleSpacing => extraSpacing;
+  double? get titleSpacing => normalSpacing;
+  double? get leadingWidth => d48;
   IconThemeData? get actionsIconTheme => iconTheme;
-  IconThemeData? get iconTheme => IconThemeData(size: 24, color: GrayColor.g10);
+  Widget? get leading => super.leading;
+  IconThemeData? get iconTheme =>
+      IconThemeData(size: d24, color: GrayColor.g10);
 
   @override
   StatefulElement createElement() {
