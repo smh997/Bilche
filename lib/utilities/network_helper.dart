@@ -18,7 +18,7 @@ class NetworkHelper {
   int? _statusCode;
   String? _body;
 
-  http.Response? get response => _response;
+  // http.Response? get response => _response;
   int? get statusCode => _statusCode;
   String? get body => _body;
 
@@ -26,7 +26,7 @@ class NetworkHelper {
   httpGet({
     Map<String, String>? headers,
   }) async {
-    print('GET: ' + url.path);
+    print('GET: ' + url.toString());
     return http
         .get(url,
             headers: headers ?? {"Authorization": "Bearer $token"}
@@ -34,8 +34,9 @@ class NetworkHelper {
         .then((value) {
       _response = value;
       _statusCode = _response?.statusCode;
-      _body = _response?.body;
+      _body = utf8.decode(_response!.bodyBytes);
       // print(jsonEncode(_body));
+      print('=> Response Body: ${jsonEncode(_body)}');
     }).timeout(Duration(seconds: 10), onTimeout: () {
       throw ('TimeOut Error!');
     }).catchError((error) {
@@ -49,8 +50,10 @@ class NetworkHelper {
       body,
       Encoding? encoding,
       bool jsonEncoding = true}) async {
-    print('POST: ' + url.path);
-    print('=> Request Body: ' + jsonEncode(body));
+    print('POST: ' + url.toString());
+    print(
+      '=> Request Body: ' + (jsonEncode(body)).toString(),
+    );
     return await http
         .post(url,
             headers: headers ?? {"Authorization": "Bearer $token"}
@@ -60,8 +63,8 @@ class NetworkHelper {
         .then((value) {
       _response = value;
       _statusCode = _response?.statusCode;
-      _body = _response?.body;
-      // print(jsonEncode(_body));
+      _body = utf8.decode(_response!.bodyBytes);
+      print('=> Response Body: ${jsonEncode(_body)}');
     }).timeout(Duration(seconds: 10), onTimeout: () {
       throw ('TimeOut Error!');
     }).catchError((error) {
@@ -71,7 +74,7 @@ class NetworkHelper {
   }
 
   httpDelete({Map<String, String>? headers, bool jsonEncoding = true}) async {
-    print('DELETE: ' + url.path);
+    print('DELETE: ' + url.toString());
     return await http
         .delete(
       url,
@@ -81,7 +84,7 @@ class NetworkHelper {
         .then((value) {
       _response = value;
       _statusCode = _response?.statusCode;
-      _body = _response?.body;
+      _body = utf8.decode(_response!.bodyBytes);
       // print(jsonEncode(_body));
     }).timeout(Duration(seconds: 10), onTimeout: () {
       throw ('TimeOut Error!');
@@ -96,7 +99,7 @@ class NetworkHelper {
     body,
     Encoding? encoding,
   }) async {
-    print('PUT: ' + url.path);
+    print('PUT: ' + url.toString());
     return await http
         .put(url,
             headers: headers ?? {"Authorization": "Bearer $token"}

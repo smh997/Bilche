@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 const Color backgroundColor = Color(0xFFF8F9FB);
+const Color errorColor = Color(0xFFFF3B30);
+const Color successColor = PrimaryColor.main;
 
 class PrimaryColor {
   static const Color veryLight = Color(0xFF8AECB3);
@@ -33,6 +35,14 @@ class GrayColor {
   static const Color g90 = Color(0xFFE5E5E5);
   static const Color g95 = Color(0xFFF2F2F2);
   static const Color white = Colors.white;
+}
+
+class AssistantColor {
+  static const Color watering = Color(0xFF2692FF);
+  static const Color fertilizing = Color(0xFFFF9326);
+  static const Color checkup = Color(0xFFAF52DE);
+  static const Color warning = Color(0xFFFF3B30);
+  static const Color suggestion = Color(0xFF32C770);
 }
 
 class ShadowColor {

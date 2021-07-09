@@ -23,6 +23,7 @@ const buttonPadding = regularPadding;
 //Heights
 const menuItemHeight = d48;
 const buttonHeight = d48;
+const inputHeight = d48;
 const appBarHeight = d56;
 
 //Shadows
