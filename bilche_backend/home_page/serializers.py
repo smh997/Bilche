@@ -1,5 +1,6 @@
 import re
 
+from django.core.exceptions import ValidationError
 from rest_framework import serializers
 
 from home_page.models import BilcheFeedback, BilcheSubscribe, BilcheInstallapp
@@ -18,16 +19,16 @@ class SubscribeSerializer(serializers.Serializer):
     def validate(self, data):
         try:
             if '@' not in data['email_phone']:
-                raise Exception('لطفا شماره تلفن همراه یا یک ایمیل معتبر وارد نمایید.'
+                raise ValidationError('لطفا شماره تلفن همراه یا یک ایمیل معتبر وارد نمایید.'
                                 'شماره تلفن همراه باید با 09 شروع شود و تنها شامل 11 رقم باشد.')
             elif BilcheSubscribe.objects.filter(email=data['email_phone']).exists():
-                raise Exception('کاربری با این ایمیل قبلا در خبرنامه بیلچه ثبت نام شده است.')
-        except Exception as e:
+                raise ValidationError('کاربری با این ایمیل قبلا در خبرنامه بیلچه ثبت نام شده است.')
+        except ValidationError as e:
             pattern = re.compile("^09\d{9}$")
             if pattern.match(data['email_phone']) is None:
                 raise serializers.ValidationError(e)
             elif BilcheSubscribe.objects.filter(phone_number=data['email_phone']).exists():
-                raise Exception('کاربری با این شماره تلفن قبلا در خبرنامه بیلچه ثبت نام شده است.')
+                raise ValidationError('کاربری با این شماره تلفن قبلا در خبرنامه بیلچه ثبت نام شده است.')
         return data
 
     def create(self, validated_data):
