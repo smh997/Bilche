@@ -179,6 +179,6 @@ class FavoritePlant(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorite_plants')
     base_plant = models.ForeignKey(BasePlant, on_delete=models.CASCADE, related_name='lovers')
 
-    class Meta:
-        unique_together = (("user", "base_plant"),)
+    # class Meta:
+    #     unique_together = (("user", "base_plant"),)
 
