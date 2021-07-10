@@ -73,12 +73,10 @@ class ReportEditPlantAPIView(CreateAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-    def get_serializer(self, *args, **kwargs):
-        self.request.data['base_plant'] = self.kwargs.get('id')
-        self.request.data['user'] = self.request.user.id
-        serializer_class = self.get_serializer_class()
-        kwargs.setdefault('context', self.get_serializer_context())
-        return serializer_class(*args, **kwargs)
+    def perform_create(self, serializer):
+        user = self.request.user
+        base_plant = self.kwargs.get('id')
+        serializer.save(user=user, base_plant=base_plant)
 
 
 class FavoritePlantAPIView(APIView):
