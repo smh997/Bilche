@@ -70,9 +70,9 @@ class BasePlantObjectSerializer(serializers.ModelSerializer):
         return [color for color in base_plant.flower_colors.values_list('flower_color__color_code', 'flower_color__color_name')]
 
     def get_like(self, base_plant)->bool:
-        request = self.context.get("request")
-        if request and hasattr(request, "user"):
-            return True if FavoritePlant.objects.filter(user=request.user.id, base_plant=base_plant).exists() else False
+        request = self.context.get('request')
+        if request and hasattr(request, "user") and request.user.id is not None:
+            return FavoritePlant.objects.filter(user=request.user, base_plant=base_plant).exists()
         return False
 
 
@@ -81,6 +81,10 @@ class ReportToEditSerializer(serializers.ModelSerializer):
         model = ReportToEdit
         fields = '__all__'
         extra_kwargs = {'base_plant': {'required': False}, 'user': {'required': False}}
+
+    def create(self, validated_data):
+        validated_data['base_plant'] = BasePlant.objects.get(id=validated_data['base_plant'])
+        return super().create(validated_data)
 
 
 class FavoritePlantSerializer(serializers.ModelSerializer):
