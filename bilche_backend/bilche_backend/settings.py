@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # custom user
+from corsheaders.defaults import default_methods, default_headers
+
 AUTH_USER_MODEL = 'accounts.User'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +30,7 @@ SECRET_KEY = 'django-insecure-(wz(j#8()7ul!8j+zlyyoj8=qdcr_*@1nh@4)&op%7+4=i)_a3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # rest framework
 REST_FRAMEWORK = {
@@ -140,12 +142,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-]
+# CORS Setting
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CUSTOM_HEADERS = ('authorize', 'authorization')
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = default_methods
+CORS_ALLOW_HEADERS = default_headers + ('Access-Control-Allow-Origin', ) + CORS_ALLOW_CUSTOM_HEADERS
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://127.0.0.1:3000',
+#     'http://localhost:3000',
+#     'http://localhost:8000',
+#     'http://127.0.0.1:8000',
+# ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
